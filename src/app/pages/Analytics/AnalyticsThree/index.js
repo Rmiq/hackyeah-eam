@@ -7,7 +7,7 @@ import {
     Pie
 } from 'recharts';
 
-class PieChartPage extends Component {
+class AnalyticsThree extends Component {
 
     componentDidMount() {
 
@@ -57,4 +57,4 @@ class PieChartPage extends Component {
         )
     }
 }
-export default PieChartPage;
+export default AnalyticsThree;
