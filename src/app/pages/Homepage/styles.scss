@@ -1,6 +1,12 @@
 .container {
-  .leaflet-container{
-  height: 800px;
-  width: 100%;
-}
+  display: grid;
+  grid-template-columns: 40vw 60vw;
+  .container {
+    &-map {
+      .leaflet-container {
+        height: 800px;
+        width: 100%;
+      }
+    }
+  }
 }
