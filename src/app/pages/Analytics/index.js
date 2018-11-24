@@ -21,6 +21,7 @@ class Analytics extends Component {
             .then(function (myJson) {
                 console.log(JSON.stringify(myJson))
             });
+            
     }
     render() {
 

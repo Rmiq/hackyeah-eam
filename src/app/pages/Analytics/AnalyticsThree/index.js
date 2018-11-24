@@ -10,10 +10,15 @@ import {
 class AnalyticsThree extends Component {
 
     componentDidMount() {
-
-        // fetch('https://0f9gctnbb6.execute-api.eu-central-1.amazonaws.com/hackyeah-eam
-        // /get-data')    .then(function (response) {        return response.json(); })
-        //  .then(function (myJson) {         console.log(JSON.stringify(myJson))  });
+        fetch('https://0f9gctnbb6.execute-api.eu-central-1.amazonaws.com/hackyeah-eam/get-data') 
+            .then(function (response) {
+                return response.json(); 
+            })
+            .then(function (myJson) {
+                // console.log(JSON.stringify(myJson))  
+                let data = JSON.stringify(myJson);
+                    console.log(data);
+            });
     }
     render() {
 
