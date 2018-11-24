@@ -7,7 +7,7 @@ import {Formik} from "formik";
 import Card from '@material-ui/core/Card';
 import TextField from '@material-ui/core/TextField';
 import "./styles.scss";
-import { LineChart, Line } from 'recharts';
+import {LineChart, Line} from 'recharts';
 
 class Header extends Component {
     render() {
@@ -23,8 +23,8 @@ class Header extends Component {
                         </Link>
 
                         <Link className={`nav-link`} to="rejestracja">
-                            <Button color="inherit" classes={`nav-btn`}>Rejestracja</Button>
-                        </Link>     
+                            <Button color="inherit" className={`nav-btn`}>Rejestracja</Button>
+                        </Link>
                     </nav>
                 </div>
             </AppBar>

@@ -13,27 +13,13 @@ class App extends Component {
       <div className="app">
         <header className="app-header">
           <Header></Header>
-<<<<<<< HEAD
-          <div className="sideNav"></div>
-=======
-
->>>>>>> 1ff33b1266e2841cb45bd6ef681ee893b6c7bab1
         </header>
 
         <main className="app-container">
-<<<<<<< HEAD
           <Router>
             <Homepage path="/"></Homepage>
             <FindAppointment path="znajdz-wizyte"></FindAppointment>
           </Router>
-=======
-          <div className="app-content">
-            <Router>
-              <Homepage path="/"></Homepage>
-              <Register path="rejestracja"></Register>
-            </Router>
-          </div>
->>>>>>> 1ff33b1266e2841cb45bd6ef681ee893b6c7bab1
         </main>
       </div>
     );
