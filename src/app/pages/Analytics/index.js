@@ -31,6 +31,7 @@ class Analytics extends Component {
         return (
             <div className="analytics-heading">
                 <h1>Dane analityczne</h1>
+                <p>Kliknij w jedną z poniszych kategorii aby sprawidzić jej statystyki</p>
                 <div className="analyticsSidebar">
                     <ul>
                         <li>Chart pierwszy</li>
