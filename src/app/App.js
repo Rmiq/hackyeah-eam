@@ -3,7 +3,6 @@ import './App.scss';
 import './components/Header'
 import {Router} from "@reach/router"
 import Header from './components/Header';
-import Sidebar from './components/Sidebar';
 import Homepage from './pages/Homepage';
 import Register from './pages/Register';
 
