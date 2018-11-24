@@ -3,11 +3,7 @@ import React, {Component} from "react";
 import {Link} from "@reach/router";
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
-import {Formik} from "formik";
-import Card from '@material-ui/core/Card';
-import TextField from '@material-ui/core/TextField';
 import "./styles.scss";
-import {LineChart, Line} from 'recharts';
 
 class Header extends Component {
     render() {
@@ -22,8 +18,8 @@ class Header extends Component {
                             <Button color="inherit" className={`nav-btn`}>Home</Button>
                         </Link>
 
-                        <Link className={`nav-link`} to="rejestracja">
-                            <Button color="inherit" className={`nav-btn`}>Rejestracja</Button>
+                        <Link className={`nav-link`} to="znajdz-wizyte">
+                            <Button color="inherit" className={`nav-btn`}>Znajdź wizyte</Button>
                         </Link>
                     </nav>
                 </div>
