@@ -1,9 +1,7 @@
 .findAppointment-container {
-    .bottom-container {
-        display: grid;
-        grid-template-columns: 50vw 47vw;
+  display: flex;
+  flex-wrap: wrap;
 
-    }
   h1 {
     color: rgba(0, 0, 0, 0.87);
     text-align: center;
@@ -12,37 +10,56 @@
     font-weight: 400;
   }
   .findAppointment-input {
-    width: 400px;
+    max-width: 1000px;
+    margin: 0 auto;
     form {
       display: flex;
-      flex-direction: column;
+      flex-wrap: wrap;
+      padding: 2rem;
       .singleInput-container {
-        display: flex;
-        justify-content: center;
-      }
-      .singleInput-container:first-child {
-        margin-top: 20px;
-        display: flex;
-        align-self: center;
+        margin-top: 10px;
+        width: 50%;
         flex-direction: column;
-      }
-      .singleInput-container:nth-child(2) {
         display: flex;
-        flex-direction: column;
-        flex-shrink: 0;
-        max-width: 195px;
-        align-self: center;
-      }
-      .singleInput-container:nth-child(3) {
-        margin-top: 20px;
+        color: red;    
         div {
-          width: 195px;
-          padding-right: 0;
+          width: 400px;
+          &.MuiSelect-root-119 {
+            margin-top: 30px;
+          }
+        }
+        input {
+          min-width: 80%;
+        };
+        &:first-of-type {
+          width: 100%;
+          color: black;
+          div {
+            width: 40%;
+            legend {
+              margin-bottom: 20px;
+            }
+            div {
+              width: 100%;
+              display: flex;
+              justify-content: flex-start;
+              margin-bottom: 0;
+              padding-left: 1.5rem;
+              input {
+                min-width: auto;
+              }
+            }
+          }
         }
       }
       .submit-button {
-        margin: 20px;
+        margin-top: 20px;
       }
     }
   }
+}
+
+.bottom-container {
+  display: flex;
+  width: 100%;
 }
