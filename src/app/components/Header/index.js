@@ -20,8 +20,8 @@ class Header extends Component {
                             <Button color="inherit" classes={`nav-btn`}>Home</Button>
                         </Link>
 
-                        <Link className={`nav-link`} to="rejestracja">
-                            <Button color="inherit" classes={`nav-btn`}>Rejestracja</Button>
+                        <Link className={`nav-link`} to="znajdz-wizyte">
+                            <Button color="inherit" classes={`nav-btn`}>Znajdź wizyte</Button>
                         </Link>
 
                     </nav>

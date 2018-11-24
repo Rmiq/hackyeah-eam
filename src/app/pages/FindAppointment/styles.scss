@@ -1,0 +1,28 @@
+
+.registration-container {
+display: flex;
+justify-content: center;
+margin-top: 150px;
+ h1 {
+     color: rgba(0, 0, 0, 0.87);
+     text-align: center;
+     margin-bottom: 0;
+     font-size: 22px;
+     font-weight: 400;
+ }
+.registrationInputs {
+    width: 400px;
+    form {
+        display: flex;
+        flex-direction: column;
+        .singleInput-container {
+            display: flex;
+            justify-content: center;
+        }
+        .submit-button {
+            margin: 20px;
+        }
+    }
+    
+}
+}

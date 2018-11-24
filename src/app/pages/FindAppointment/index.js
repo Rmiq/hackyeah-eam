@@ -5,10 +5,10 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import './styles.scss';
 
-class Register extends Component {
+class FindAppointment extends Component {
   render() {
     return (
-      <div>
+      <div className="registration-container">
         <Formik
           initialValues={{
             verificationCode: "",
@@ -47,6 +47,7 @@ class Register extends Component {
             /* and other goodies */
           }) => (
             <Card className="registrationInputs">
+            <h1>Zacznij od utworzenia konta</h1>
             <form  onSubmit={handleSubmit}>
             <div className="singleInput-container">
             <TextField
@@ -139,4 +140,4 @@ class Register extends Component {
   }
 }
 
-export default Register;
+export default FindAppointment;

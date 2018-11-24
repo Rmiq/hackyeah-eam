@@ -4,7 +4,7 @@ import './components/Header'
 import {Router} from "@reach/router"
 import Header from './components/Header';
 import Homepage from './pages/Homepage';
-import Register from './pages/Register';
+import FindAppointment from './pages/FindAppointment';
 
 class App extends Component {
   render() {
@@ -13,12 +13,12 @@ class App extends Component {
       <div className="app">
         <header className="app-header">
           <Header></Header>
-          <div class="sideNav"></div>
+          <div className="sideNav"></div>
         </header>
         <main className="app-container">
           <Router>
             <Homepage path="/"></Homepage>
-            <Register path="rejestracja"></Register>
+            <FindAppointment path="znajdz-wizyte"></FindAppointment>
           </Router>
         </main>
       </div>
