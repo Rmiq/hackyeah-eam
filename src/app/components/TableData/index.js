@@ -7,6 +7,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import './styles.scss';
 
 const CustomTableCell = withStyles(theme => ({
     head: {
@@ -86,7 +87,7 @@ class TableData extends Component {
 
         return (
 
-            <div>
+            <div className="table-container">
 
                 <PlacesTable places={this.state.data.data} classes={this.props.classes}/></div>
         )

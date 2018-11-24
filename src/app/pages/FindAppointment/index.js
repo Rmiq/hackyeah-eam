@@ -5,6 +5,8 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
+import TableData from "../../components/TableData";
+import PlacesMap from "../../components/PlacesMap";
 import "./styles.scss";
 
 const RadioButton = ({
@@ -82,23 +84,20 @@ class FindAppointment extends Component {
               console.log(values);
               // alert(JSON.stringify(values, null, 2));
 
-              // fetch(
-              //   "https://api.nfz.gov.pl/queues?page=1&limit=10&format=json&case=1&province=01",
-              //   {
-              //     method: "GET"
-              //   }
-              // )
-              //   .then(data => JSON.stringify(data))
-              //   .then(data => console.log(data));
+              fetch(
+                `https://api.nfz.gov.pl/queues?page=1&limit=10&format=json&case=${values.case}&province=01&benefit=${values.benefit}`
+              )
+                .then(response => response.json())
+                .then(data => console.log(data));
 
 
-              fetch("https://0f9gctnbb6.execute-api.eu-central-1.amazonaws.com/hackyeah-eam/add-data",{
-                method: 'POST',
-                headers: {
-                  "Content-Type": "application/json; charset=utf-8",
-                },
-                body: JSON.stringify(values)
-              }).then((response)=> response.json()).then((res) => console.log(res))
+              // fetch("https://0f9gctnbb6.execute-api.eu-central-1.amazonaws.com/hackyeah-eam/add-data",{
+              //   method: 'POST',
+              //   headers: {
+              //     "Content-Type": "application/json; charset=utf-8",
+              //   },
+              //   body: JSON.stringify(values)
+              // }).then((response)=> response.json()).then((res) => console.log(res))
               setSubmitting(false);
             }, 400);
           }}
@@ -253,6 +252,13 @@ class FindAppointment extends Component {
             </Card>
           )}
         </Formik>
+        <div className="bottom-container">
+        <TableData />
+        <PlacesMap />
+       
+        </div>
+        
+        
       </div>
     );
   }

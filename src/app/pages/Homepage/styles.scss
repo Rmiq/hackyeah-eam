@@ -1,6 +1,4 @@
-.container {
-  display: grid;
-  grid-template-columns: 50vw 50vw;
+
   .container {
     &-table {
       padding: 0 1rem;
@@ -10,10 +8,6 @@
     }
     &-map {
       padding: 0 1rem;
-      .leaflet-container {
-        height: 600px;
-        width: 100%;
-      }
+      
     }
   }
-}
