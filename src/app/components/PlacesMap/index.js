@@ -8,8 +8,8 @@ import "./styles.scss";
 class PlacesMap extends Component {
 
     state = {
-        lat:[],
-        lng: [],
+        lat:50,
+        lng: 50,
         zoom: 5
     }
     
