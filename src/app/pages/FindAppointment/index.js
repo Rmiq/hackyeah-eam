@@ -1,36 +1,83 @@
 import React, { Component } from "react";
-import { Formik } from "formik";
-import Card from '@material-ui/core/Card';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import './styles.scss';
+import { Formik, Field } from "formik";
+import Card from "@material-ui/core/Card";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
+import "./styles.scss";
+
+const RadioButton = ({
+  field: { name, value, onChange, onBlur },
+  id,
+  label,
+  className,
+  ...props
+}) => {
+  return (
+    <div>
+      <input
+        name={name}
+        id={id}
+        type="radio"
+        value={id} // could be something else for output?
+        checked={id === value}
+        onChange={onChange}
+        onBlur={onBlur}
+        className=""
+        {...props}
+      />
+      <label htmlFor={id}>{label}</label>
+    </div>
+  );
+};
+
+const RadioButtonGroup = ({
+  value,
+  error,
+  touched,
+  id,
+  label,
+  className,
+  children
+}) => {
+  return (
+    <div className="">
+      <legend>{label}</legend>
+      {children}
+      {touched && <InputFeedback error={error} />}
+    </div>
+  );
+};
+
+// Input feedback
+const InputFeedback = ({ error }) =>
+  error ? <div className="">{error}</div> : null;
 
 class FindAppointment extends Component {
   render() {
     return (
-      <div className="registration-container">
+      <div className="findAppointment-container">
         <Formik
           initialValues={{
-            verificationCode: "",
-            pesel: "",
-            firstName: "",
-            surname: "",
-            email: "",
-            password: ""
+            case: "",
+            province: "00",
+            benefit: "",
+            locality: "",
+            street: "",
+            locality: "",
+            place: ''
           }}
           validate={values => {
             let errors = {};
-            if (!values.email) {
-              errors.email = "Required";
-            } else if (
-              !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-            ) {
-              errors.email = "Invalid email address";
+            if (!values.benefit) {
+              errors.benefit = "Pole wymagane";
             }
             return errors;
           }}
           onSubmit={(values, { setSubmitting }) => {
             setTimeout(() => {
+              console.log(values)
               alert(JSON.stringify(values, null, 2));
               setSubmitting(false);
             }, 400);
@@ -46,92 +93,147 @@ class FindAppointment extends Component {
             isSubmitting
             /* and other goodies */
           }) => (
-            <Card className="registrationInputs">
-            <h1>Zacznij od utworzenia konta</h1>
-            <form  onSubmit={handleSubmit}>
-            <div className="singleInput-container">
-            <TextField
-            type="verificationCode"
-          id="verificationCode"
-          label="Kod weryfikacyjny"
-          className="textField"
-          value={values.verificationCode}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          margin="normal"
-        />
-              {errors.verificationCode && touched.verificationCode && errors.verificationCode}
-              </div>
-              
-              <div className="singleInput-container">
-              <TextField
-            type="pesel"
-          id="pesel"
-          label="Pesel"
-          className="textField"
-          value={values.pesel}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          margin="normal"
-        />
-              {errors.pesel && touched.pesel && errors.pesel}
-              </div>
-              <div className="singleInput-container">
-              <TextField
-            type="firstName"
-          id="firstName"
-          label="Imię"
-          className="textField"
-          value={values.firstName}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          margin="normal"
-        />
-              {errors.firstName && touched.firstName && errors.firstName}
-              </div>
-              <div className="singleInput-container">
-              <TextField
-            type="surname"
-          id="surname"
-          label="Nazwisko"
-          className="textField"
-          value={values.surname}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          margin="normal"
-        />
-              {errors.surname && touched.surname && errors.surname}
-              </div>
-              <div className="singleInput-container">
-              <TextField
-            type="email"
-          id="email"
-          label="E-mail"
-          className="textField"
-          value={values.email}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          margin="normal"
-        />
-              {errors.email && touched.email && errors.email}
-              </div>
-              <div className="singleInput-container">
-              <TextField
-            type="password"
-          id="password"
-          label="Hasło"
-          className="textField"
-          value={values.password}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          margin="normal"
-        />
-              {errors.password && touched.password && errors.password}
-              </div>
-              <Button type="submit" disabled={isSubmitting} variant="contained" color="primary" className="submit-button">
-        Załóż konto
-      </Button>
-            </form>
+            <Card className="findAppointment-input">
+              <h1>Zacznij od wyszukania terminu</h1>
+
+              <form onSubmit={handleSubmit}>
+                <div className="singleInput-container">
+                  <RadioButtonGroup
+                    id="case"
+                    label="Wybierz przypadek *"
+                    value={values.radioGroup}
+                    error={errors.radioGroup}
+                    touched={touched.radioGroup}
+                  >
+                    <Field
+                      component={RadioButton}
+                      name="case"
+                      id="1"
+                      label="stabilny"
+                    />
+                    <Field
+                      component={RadioButton}
+                      name="case"
+                      id="2"
+                      label="pilny"
+                    />
+                  </RadioButtonGroup>
+                </div>
+                <div className="singleInput-container">
+                  <TextField
+                    type="benefit"
+                    id="benefit"
+                    label="Nazwa świadczenia *"
+                    className="textField"
+                    value={values.benefit}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    margin="normal"
+                  />
+                  {errors.benefit &&
+                    touched.benefit &&
+                    errors.benefit}
+                </div>
+                <div className="singleInput-container">
+                  <Select
+                    name="province"
+                    value={values.province}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    // inputProps={{
+                    //   name: 'age',
+                    //   id: 'age-simple',
+                    // }}
+                  >
+                    <MenuItem value="00">
+                      <em>Cała Polska</em>
+                    </MenuItem>
+                    <MenuItem value="01">Dolnośląskie</MenuItem>
+                    <MenuItem value="02">Kujawsko-pomorskie</MenuItem>
+                    <MenuItem value="03">Lubelskie</MenuItem>
+                    <MenuItem value="04">Lubuskie</MenuItem>
+                    <MenuItem value="05">Łódzkie</MenuItem>
+                    <MenuItem value="06">Małopolskie</MenuItem>
+                    <MenuItem value="07">Mazowieckie</MenuItem>
+                    <MenuItem value="08">Opolskie</MenuItem>
+                    <MenuItem value="09">Podkarpackie</MenuItem>
+                    <MenuItem value="10">Podlaskie</MenuItem>
+                    <MenuItem value="11">Pomorskie</MenuItem>
+                    <MenuItem value="12">Śląskie</MenuItem>
+                    <MenuItem value="13">Świętokrzyskie</MenuItem>
+                    <MenuItem value="14">Warmińsko-mazurskie</MenuItem>
+                    <MenuItem value="15">Wielkopolskie</MenuItem>
+                    <MenuItem value="16">Zachodniopomorskie</MenuItem>
+                  </Select>
+                  {errors.province &&
+                    touched.province &&
+                    errors.province}
+                </div>
+                <div className="singleInput-container">
+                  <TextField
+                    type="locality"
+                    id="locality"
+                    label="Miejscowość"
+                    className="textField"
+                    value={values.locality}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    margin="normal"
+                  />
+                  {errors.locality && touched.locality && errors.locality}
+                </div>
+               
+                
+                <div className="singleInput-container">
+                  <TextField
+                    type="street"
+                    id="street"
+                    label="Ulica"
+                    className="textField"
+                    value={values.street}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    margin="normal"
+                  />
+                  {errors.street && touched.street && errors.street}
+                </div>
+                <div className="singleInput-container">
+                  <TextField
+                    type="place"
+                    id="place"
+                    label="Numer ulicy"
+                    className="textField"
+                    value={values.place}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    margin="normal"
+                  />
+                  {errors.place && touched.place && errors.place}
+                </div>
+                <div className="singleInput-container">
+                  <TextField
+                    type="locality"
+                    id="locality"
+                    label="Placówka"
+                    className="textField"
+                    value={values.locality}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    margin="normal"
+                  />
+                  {errors.locality && touched.locality && errors.locality}
+                </div>
+                
+                <Button
+                  type="submit"
+                  disabled={isSubmitting}
+                  variant="contained"
+                  color="primary"
+                  className="submit-button"
+                >
+                  Wyszukaj termin
+                </Button>
+              </form>
             </Card>
           )}
         </Formik>
