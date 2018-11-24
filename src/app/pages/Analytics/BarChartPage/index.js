@@ -2,16 +2,12 @@ import React, {Component} from "react";
 import './styles.scss';
 
 import {
-    LineChart,
-    Line,
     BarChart,
     CartesianGrid,
     XAxis,
     YAxis,
     Tooltip,
     Bar,
-    PieChart,
-    Pie,
     Legend
 } from 'recharts';
 
@@ -70,7 +66,7 @@ class BarChartPage extends Component {
         // 4800}];
         return (
             <div className="analytics-heading">
-                <h1>Dane analityczne</h1>
+                <h4>Wykres słupkowy</h4>
                 <div className="charts-container">
                     <BarChart
                         width={600}

@@ -6,15 +6,6 @@ import React, {Component} from "react";
 import {
     LineChart,
     Line,
-    BarChart,
-    CartesianGrid,
-    XAxis,
-    YAxis,
-    Tooltip,
-    Bar,
-    PieChart,
-    Pie,
-    Legend
 } from 'recharts';
 
 class LineChartPage extends Component {
@@ -71,7 +62,7 @@ class LineChartPage extends Component {
         // value: 4800}];
         return (
             <div className="analytics-heading">
-                <h1>Dane analityczne</h1>
+                <h4>Wykres liniowy</h4>
                 <div className="charts-container">
                     <LineChart width={400} height={400} data={data}>
                         <Line type="monotone" dataKey="uv" stroke="#8884d8"/>
