@@ -80,7 +80,22 @@ class FindAppointment extends Component {
           onSubmit={(values, { setSubmitting }) => {
             setTimeout(() => {
               console.log(values);
-              alert(JSON.stringify(values, null, 2));
+              // alert(JSON.stringify(values, null, 2));
+
+              // fetch(
+              //   "https://api.nfz.gov.pl/queues?page=1&limit=10&format=json&case=1&province=01",
+              //   {
+              //     method: "GET"
+              //   }
+              // )
+              //   .then(data => JSON.stringify(data))
+              //   .then(data => console.log(data));
+
+
+              fetch("https://0f9gctnbb6.execute-api.eu-central-1.amazonaws.com/hackyeah-eam/add-data",{
+                method: 'POST',
+                body: values
+              }).then((response)=> response.json()).then((res) => console.log(res))
               setSubmitting(false);
             }, 400);
           }}

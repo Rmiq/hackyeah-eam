@@ -25,7 +25,6 @@ class Analytics extends Component {
            });
     }
     render() {
-        return null;
         return (
 
             <div className="analytics-heading">
