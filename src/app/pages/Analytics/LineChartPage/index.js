@@ -1,8 +1,6 @@
 import React, {Component} from "react";
 
 
-// import './styles.scss';
-
 import {
     LineChart,
     Line,
