@@ -22,12 +22,21 @@ class PlacesMap extends Component {
                     url='http://{s}.tile.osm.org/{z}/{x}/{y}.png' />
                 <Marker position={position}>
                     <Popup>
-                        <h3>Provider</h3>
+                        <h2>Provider Name</h2>
                         <p>Locality, address</p>
                         <div>
-                            <p>Dates:</p>
-                            <span>2018-11-12</span>
+                            <div>
+                                <p>Dates:</p>
+                                <ul>
+                                    <li>2018-11-12</li>
+                                </ul>
+
+                            </div>
+                            <div>
+                                <button>Umów wizytę</button>
+                            </div>
                         </div>
+                        
 
                     </Popup>
                 </Marker>

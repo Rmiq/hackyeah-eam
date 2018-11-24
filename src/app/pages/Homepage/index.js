@@ -9,7 +9,9 @@ class Homepage extends Component {
     render() {
         return (
             <div className="container">
-                <TableData/>
+                <div className="container-table">
+                    <TableData/>
+                </div>
                 <div className="container-map">
                     <PlacesMap/>
                 </div>
