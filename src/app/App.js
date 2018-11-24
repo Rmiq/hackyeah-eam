@@ -10,17 +10,12 @@ class App extends Component {
   render() {
 
     return (
-      <div className="App">
-        <header className="App-header">
-<<<<<<< HEAD
+      <div className="app">
+        <header className="app-header">
           <Header></Header>
           <div class="sideNav"></div>
-=======
-          <div className="topNav"></div>
-          <div className="sideNav"></div>
->>>>>>> 472331c13ed108e07d7c332b33566c042ad4712f
         </header>
-        <main>
+        <main className="app-container">
           <Router>
             <Homepage path="/"></Homepage>
             <Register path="rejestracja"></Register>
