@@ -33,21 +33,16 @@ class Database {
     }
 }
 
-exports.handler = (event, context) => {
+exports.handler = (event, context, callback) => {
+    // TODO implement
+    
     const database = new Database(config);
-    const query1 = `SELECT * FROM users`;
-    const query2 = `SELECT pesel FROM users`;
+    const query = `SELECT * FROM records`;
     const responseBody = '';
     
-    database.query(query1).then(rows => {
-        if (rows != null) {
-            return database.query(query2);
-        }
-        else {
-            throw "Null";
-        }
-    }).then(response => {
+    database.query(query).then(response => {
         responseBody = response;
+        console.log(responseBody);
         return database.close();
     }).then(() => {
         context.succeed(responseBody);
@@ -56,4 +51,16 @@ exports.handler = (event, context) => {
             context.fail(null);
         });
     });
+    
+    const response = {
+        statusCode: 200,
+        body: JSON.stringify({
+            key1: 'key1',
+            key2: 'key2',
+            key3: 'key3',
+            key4: 'key4',
+            key5: 'key5',
+        }),
+    };
+    callback(null, response);
 };

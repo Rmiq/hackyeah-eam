@@ -5,6 +5,7 @@ import {Router} from "@reach/router"
 import Header from './components/Header';
 import Homepage from './pages/Homepage';
 import FindAppointment from './pages/FindAppointment';
+import Analytics from './pages/Analytics';
 
 class App extends Component {
   render() {
@@ -19,6 +20,7 @@ class App extends Component {
           <Router>
             <Homepage path="/"></Homepage>
             <FindAppointment path="znajdz-wizyte"></FindAppointment>
+            <Analytics path="dane-analityczne"></Analytics>
           </Router>
         </main>
       </div>
