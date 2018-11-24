@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import PlacesMap from "../../../components/PlacesMap";
 import './styles.scss';
 
 import {
@@ -15,11 +16,8 @@ class AnalyticsOne extends Component {
 
     componentDidMount() {
 
-        const url = "https://0f9gctnbb6.execute-api.eu-central-1.amazonaws.com/hackyeah-eam/get-data";
-        fetch(url, {
-            method: "GET",
-            body: JSON.stringify(["wojewodztwo", "przypadek"])
-        })
+        const url = "https://0f9gctnbb6.execute-api.eu-central-1.amazonaws.com/hackyeah-eam/get-data?wojewodztwo=05";
+        fetch(url)
             .then(function (response) {
                 return response.json();
             })
@@ -32,7 +30,7 @@ class AnalyticsOne extends Component {
         return (
             <div className="analytics-heading">
                 <h2>Mapa wyszukiwań szpitali</h2>
-                
+                <PlacesMap />
             </div>
         )
     }
