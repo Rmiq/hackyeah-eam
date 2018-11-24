@@ -262,8 +262,8 @@ class FindAppointment extends Component {
         </Formik>
         <div className="bottom-container">
         {console.log(dataPlaces)}
-        {submitCount === 0 ? null : dataPlaces.length != 0 ? <TableData dataPlaces={dataPlaces}/> : <span>Wyszukaj ponownie</span> }
-        <PlacesMap />
+        {submitCount === 0 ? null : dataPlaces.length != 0 ? <div className="bottom-inner"><TableData dataPlaces={dataPlaces}/><PlacesMap /></div> : <span>Wyszukaj ponownie</span> }
+        
        
         </div>
         
