@@ -1,3 +1,13 @@
+.map-container {
+    padding: 10px;
+    .leaflet-container {
+        height: 600px;
+        width: 100%;
+      }
+    
+}
+
+
 .leaflet-marker-icon {
     background: url(./icon.svg);
     background-size: cover;

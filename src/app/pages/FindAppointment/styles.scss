@@ -1,7 +1,9 @@
 .findAppointment-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 150px;
+    .bottom-container {
+        display: grid;
+        grid-template-columns: 50vw 47vw;
+
+    }
   h1 {
     color: rgba(0, 0, 0, 0.87);
     text-align: center;
