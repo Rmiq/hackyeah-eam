@@ -2,4 +2,5 @@
 Hackyeah hackathon tournament
 
 #### Contributors
-    - Remigiusz Chiluta
+
+- Remigiusz Chiluta
