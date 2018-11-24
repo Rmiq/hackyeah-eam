@@ -1,30 +1,17 @@
 import React, {Component} from "react";
 import './styles.scss';
-import { LineChart, Line, BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Bar } from 'recharts';
+import { LineChart, Line, BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Bar, PieChart, Pie, Legend } from 'recharts';
 
 class Analytics extends Component {
 
-    // constructor(props){
-    //     super(props);
-    // }
-
     componentDidMount() {
-        // fetch('https://0f9gctnbb6.execute-api.eu-central-1.amazonaws.com/hackyeah-eam/get-data')
-        // .then(results => {
-        //     return results.json();
-        // }).then(data => {
-        //     console.log(data);
-        // })
         
         fetch('https://0f9gctnbb6.execute-api.eu-central-1.amazonaws.com/hackyeah-eam/get-data')
            .then(function (response) {
                return response.json();
            })
            .then(function (myJson) {
-            //    console.log(JSON.stringify(myJson));
-            // const data = JSON.stringify(myJson);
-            
-
+                console.log(JSON.stringify(myJson))
            });
     }
     render() {
@@ -37,9 +24,9 @@ class Analytics extends Component {
             {name: 'Page F', uv: 2390, pv: 3800, amt: 2500},
             {name: 'Page G', uv: 3490, pv: 4300, amt: 2100},
       ];
-      const data01 = [{name: 'Group A', value: 400}, {name: 'Group B', value: 300},
-                  {name: 'Group C', value: 300}, {name: 'Group D', value: 200}]
-
+      const data02 = [{name: 'Group A', value: 2400}, {name: 'Group B', value: 4567},
+                  {name: 'Group C', value: 1398}, {name: 'Group D', value: 9800},
+                  {name: 'Group E', value: 3908}, {name: 'Group F', value: 4800}];
         return (
             <div className="analytics-heading">
                 <h1>Dane analityczne</h1>
@@ -56,6 +43,10 @@ class Analytics extends Component {
                         <Bar dataKey="pv" fill="#8884d8" />
                         <Bar dataKey="uv" fill="#82ca9d" />
                     </BarChart>
+                    <PieChart width={800} height={400}>
+        <Pie data={data02} cx={500} cy={200} innerRadius={40} outerRadius={80} fill="#82ca9d"/>
+        <Tooltip/>
+       </PieChart>
                 </div>
             </div>
         )

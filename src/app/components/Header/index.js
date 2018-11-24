@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-
 import {Link} from "@reach/router";
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
@@ -9,7 +8,6 @@ class Header extends Component {
     render() {
 
         return (
-
             <AppBar position="sticky">
                 <div className={`nav class-2`}>
                     <h1 className="nav-logo">Hackyeah-EAM</h1>
@@ -27,7 +25,6 @@ class Header extends Component {
                     </nav>
                 </div>
             </AppBar>
-
         )
     }
 }
