@@ -4,9 +4,9 @@ import { LineChart, Line } from 'recharts';
 
 class Analytics extends Component {
 
-    constructor(){
-        super();
-    }
+    // constructor(props){
+    //     super(props);
+    // }
 
     componentDidMount() {
         // fetch('https://0f9gctnbb6.execute-api.eu-central-1.amazonaws.com/hackyeah-eam/get-data')
@@ -15,16 +15,19 @@ class Analytics extends Component {
         // }).then(data => {
         //     console.log(data);
         // })
-        // fetch('https://0f9gctnbb6.execute-api.eu-central-1.amazonaws.com/hackyeah-eam/get-data')
-        //    .then(function (response) {
-        //        return response.json();
-        //    })
-        //    .then(function (myJson) {
-        //        console.log(JSON.stringify(myJson));
-        //    });
+        console.log('test');
+        fetch('https://0f9gctnbb6.execute-api.eu-central-1.amazonaws.com/hackyeah-eam/get-data')
+           .then(function (response) {
+               return response.json();
+           })
+           .then(function (myJson) {
+               console.log(JSON.stringify(myJson));
+           });
     }
     render() {
+        return null;
         return (
+
             <div className="analytics-heading">
                 <h1>Dane analityczne</h1>
                 <div className="charts-container">
@@ -35,6 +38,5 @@ class Analytics extends Component {
             </div>
         )
     }
-    
 }
 export default Analytics;
