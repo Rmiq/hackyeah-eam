@@ -1,4 +1,5 @@
 # hackyeah-eam
+
 Hackyeah hackathon tournament
 
 #### Contributors
@@ -6,3 +7,4 @@ Hackyeah hackathon tournament
 - Remigiusz Chiluta
 - Mateusz Wisniewski
 - Szymon Niemiec
+- Adam Knieć
