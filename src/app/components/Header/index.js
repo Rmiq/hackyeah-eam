@@ -13,10 +13,6 @@ class Header extends Component {
                     <h1 className="nav-logo">Hackyeah-EAM</h1>
                     <nav>
                         <Link className={`nav-link`} to="/">
-                            <Button color="inherit" className={`nav-btn`}>Home (Do usuniecia potem)</Button>
-                        </Link>
-
-                        <Link className={`nav-link`} to="znajdz-wizyte">
                             <Button color="inherit" className={`nav-btn`}>Umów wizytę</Button>
                         </Link>
                         <Link className={`nav-link`} to="dane-analityczne">
