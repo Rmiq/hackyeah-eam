@@ -2,19 +2,12 @@ import React, {Component} from "react";
 import './styles.scss';
 
 import {
-    LineChart,
-    Line,
-    BarChart,
-    CartesianGrid,
-    XAxis,
-    YAxis,
     Tooltip,
-    Bar,
     PieChart,
     Pie
 } from 'recharts';
 
-class PieChartPage extends Component {
+class AnalyticsThree extends Component {
 
     componentDidMount() {
 
@@ -47,7 +40,7 @@ class PieChartPage extends Component {
         ];
         return (
             <div className="analytics-heading">
-                <h1>Dane analityczne</h1>
+                <h4>Wykres kołowy</h4>
                 <div className="charts-container">
                     <PieChart width={800} height={400}>
                         <Pie
@@ -64,4 +57,4 @@ class PieChartPage extends Component {
         )
     }
 }
-export default PieChartPage;
+export default AnalyticsThree;

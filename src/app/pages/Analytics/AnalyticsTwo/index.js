@@ -1,29 +1,15 @@
 import React, {Component} from "react";
 
 
-// import './styles.scss';
-
 import {
     LineChart,
     Line,
-    BarChart,
-    CartesianGrid,
-    XAxis,
-    YAxis,
-    Tooltip,
-    Bar,
-    PieChart,
-    Pie,
-    Legend
 } from 'recharts';
 
-class LineChartPage extends Component {
+class AnalyticsTwo extends Component {
 
     componentDidMount() {
 
-        // fetch('https://0f9gctnbb6.execute-api.eu-central-1.amazonaws.com/hackyeah-eam
-        // /get-data')    .then(function (response) {        return response.json(); })
-        //   .then(function (myJson) {         console.log(JSON.stringify(myJson))  });
     }
     render() {
 
@@ -71,7 +57,7 @@ class LineChartPage extends Component {
         // value: 4800}];
         return (
             <div className="analytics-heading">
-                <h1>Dane analityczne</h1>
+                <h4>Wykres liniowy</h4>
                 <div className="charts-container">
                     <LineChart width={400} height={400} data={data}>
                         <Line type="monotone" dataKey="uv" stroke="#8884d8"/>
@@ -81,4 +67,4 @@ class LineChartPage extends Component {
         )
     }
 }
-export default LineChartPage;
+export default AnalyticsTwo;
