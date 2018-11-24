@@ -31,7 +31,7 @@ class Analytics extends Component {
         return (
             <div className="analytics-heading">
                 <h1>Dane analityczne</h1>
-                <div className="charts-container">
+                {/* <div className="charts-container">
                     <LineChart width={400} height={400} data={data}>
                         <Line type="monotone" dataKey="uv" stroke="#8884d8" />
                     </LineChart>
@@ -45,10 +45,10 @@ class Analytics extends Component {
                         <Bar dataKey="uv" fill="#82ca9d" />
                     </BarChart>
                     <PieChart width={800} height={400}>
-        <Pie data={data02} cx={500} cy={200} innerRadius={40} outerRadius={80} fill="#82ca9d"/>
-        <Tooltip/>
-       </PieChart>
-                </div>
+                        <Pie data={data02} cx={500} cy={200} innerRadius={40} outerRadius={80} fill="#82ca9d"/>
+                            <Tooltip/>
+                        </PieChart>
+                </div> */}
             </div>
         )
     }
