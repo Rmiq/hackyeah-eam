@@ -1,0 +1,11 @@
+.leaflet-popup {
+    .leaflet-popup-content {
+        margin: 20px 15px 0;
+        h2,p,span,ul {
+            margin: 0;
+        }
+        ul {
+            padding-left: 20px;
+        }
+    }
+}
