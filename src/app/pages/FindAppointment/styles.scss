@@ -1,7 +1,6 @@
 .findAppointment-container {
   display: flex;
   flex-wrap: wrap;
-
   h1 {
     color: rgba(0, 0, 0, 0.87);
     text-align: center;
@@ -12,6 +11,7 @@
   .findAppointment-input {
     max-width: 1000px;
     margin: 0 auto;
+    margin-bottom: 2.5rem;
     form {
       display: flex;
       flex-wrap: wrap;
