@@ -63,21 +63,23 @@ class FindAppointment extends Component {
             case: "",
             province: "00",
             benefit: "",
-            locality: "",
+            provider: "",
             street: "",
             locality: "",
-            place: ''
+            place: ""
           }}
           validate={values => {
             let errors = {};
             if (!values.benefit) {
               errors.benefit = "Pole wymagane";
+            } else if (!values.case) {
+              errors.case = "Pole wymagane";
             }
             return errors;
           }}
           onSubmit={(values, { setSubmitting }) => {
             setTimeout(() => {
-              console.log(values)
+              console.log(values);
               alert(JSON.stringify(values, null, 2));
               setSubmitting(false);
             }, 400);
@@ -118,6 +120,7 @@ class FindAppointment extends Component {
                       label="pilny"
                     />
                   </RadioButtonGroup>
+                  {errors.case && touched.case && errors.case}
                 </div>
                 <div className="singleInput-container">
                   <TextField
@@ -130,9 +133,7 @@ class FindAppointment extends Component {
                     onBlur={handleBlur}
                     margin="normal"
                   />
-                  {errors.benefit &&
-                    touched.benefit &&
-                    errors.benefit}
+                  {errors.benefit && touched.benefit && errors.benefit}
                 </div>
                 <div className="singleInput-container">
                   <Select
@@ -165,9 +166,7 @@ class FindAppointment extends Component {
                     <MenuItem value="15">Wielkopolskie</MenuItem>
                     <MenuItem value="16">Zachodniopomorskie</MenuItem>
                   </Select>
-                  {errors.province &&
-                    touched.province &&
-                    errors.province}
+                  {errors.province && touched.province && errors.province}
                 </div>
                 <div className="singleInput-container">
                   <TextField
@@ -182,8 +181,7 @@ class FindAppointment extends Component {
                   />
                   {errors.locality && touched.locality && errors.locality}
                 </div>
-               
-                
+
                 <div className="singleInput-container">
                   <TextField
                     type="street"
@@ -212,18 +210,18 @@ class FindAppointment extends Component {
                 </div>
                 <div className="singleInput-container">
                   <TextField
-                    type="locality"
-                    id="locality"
+                    type="provider"
+                    id="provider"
                     label="Placówka"
                     className="textField"
-                    value={values.locality}
+                    value={values.provider}
                     onChange={handleChange}
                     onBlur={handleBlur}
                     margin="normal"
                   />
-                  {errors.locality && touched.locality && errors.locality}
+                  {errors.provider && touched.provider && errors.provider}
                 </div>
-                
+
                 <Button
                   type="submit"
                   disabled={isSubmitting}

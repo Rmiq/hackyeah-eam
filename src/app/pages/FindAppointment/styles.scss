@@ -19,7 +19,10 @@
         justify-content: center;
       }
       .singleInput-container:first-child {
-margin-top: 20px;
+        margin-top: 20px;
+        display: flex;
+        align-self: center;
+        flex-direction: column;
       }
       .singleInput-container:nth-child(2) {
         display: flex;
@@ -29,8 +32,7 @@ margin-top: 20px;
         align-self: center;
       }
       .singleInput-container:nth-child(3) {
-          
-          margin-top: 20px;
+        margin-top: 20px;
         div {
           width: 195px;
           padding-right: 0;
