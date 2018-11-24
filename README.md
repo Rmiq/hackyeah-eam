@@ -1,3 +1,7 @@
+---
+permalink: /index.html
+---
+
 # hackyeah-eam
 
 Hackyeah hackathon tournament
