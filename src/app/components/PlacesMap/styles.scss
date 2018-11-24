@@ -1,6 +1,13 @@
+.leaflet-marker-icon {
+    background: url(./icon.svg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 .leaflet-popup {
     .leaflet-popup-content {
-        margin: 20px 15px 0;
+        margin: 20px 15px 10px;
         h2,p,span,ul {
             margin: 0;
         }
