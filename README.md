@@ -12,3 +12,4 @@ Hackyeah hackathon tournament
 - Mateusz Wisniewski
 - Szymon Niemiec
 - Adam Knieć
+- Kamil Kędzierski
