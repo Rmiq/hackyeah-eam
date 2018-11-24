@@ -16,23 +16,28 @@ class AnalyticsOne extends Component {
 
     componentDidMount() {
 
-        const url = "https://0f9gctnbb6.execute-api.eu-central-1.amazonaws.com/hackyeah-eam/get-data?wojewodztwo=05";
+        const url = "https://0f9gctnbb6.execute-api.eu-central-1.amazonaws.com/hackyeah-eam/get-data?isFinalized=true;";
         fetch(url)
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (myJson) {
-                console.log(JSON.stringify(myJson));
-            });
+            .then(response => response.json())
+            .then(data => this.setState({ dataPlaces: data }));
     }
-    render() {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+          dataPlaces: [],
+          submitCount: 0
+        }
+    }
+
+    render() {
         return (
             <div className="analytics-heading">
                 <h2>Mapa wyszukiwań szpitali</h2>
                 <PlacesMap />
+                {console.log(this.state.dataPlaces)}
             </div>
-        )
+        )   
     }
 }
 export default AnalyticsOne;
