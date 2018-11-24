@@ -3,7 +3,7 @@ import React, {Component} from "react";
 import {Link} from "@reach/router";
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
-import { Formik } from "formik";
+import {Formik} from "formik";
 import Card from '@material-ui/core/Card';
 import TextField from '@material-ui/core/TextField';
 import "./styles.scss";
