@@ -6,4 +6,5 @@ Hackyeah hackathon tournament
 
 - Remigiusz Chiluta
 - Mateusz Wisniewski
+- Szymon Niemiec
 - Kamil Kędzierski
