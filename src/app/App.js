@@ -13,13 +13,16 @@ class App extends Component {
       <div className="app">
         <header className="app-header">
           <Header></Header>
-          <div class="sideNav"></div>
+
         </header>
+
         <main className="app-container">
-          <Router>
-            <Homepage path="/"></Homepage>
-            <Register path="rejestracja"></Register>
-          </Router>
+          <div className="app-content">
+            <Router>
+              <Homepage path="/"></Homepage>
+              <Register path="rejestracja"></Register>
+            </Router>
+          </div>
         </main>
       </div>
     );
