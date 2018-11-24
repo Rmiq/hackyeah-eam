@@ -12,8 +12,13 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
+<<<<<<< HEAD
           <Header></Header>
           <div class="sideNav"></div>
+=======
+          <div className="topNav"></div>
+          <div className="sideNav"></div>
+>>>>>>> 472331c13ed108e07d7c332b33566c042ad4712f
         </header>
         <main>
           <Router>
