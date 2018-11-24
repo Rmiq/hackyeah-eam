@@ -14,13 +14,13 @@ import {
     Pie
 } from 'recharts';
 
-class pieChart extends Component {
+class PieChartPage extends Component {
 
     componentDidMount() {
 
         // fetch('https://0f9gctnbb6.execute-api.eu-central-1.amazonaws.com/hackyeah-eam
         // /get-data')    .then(function (response) {        return response.json(); })
-        //   .then(function (myJson) {         console.log(JSON.stringify(myJson))  });
+        //  .then(function (myJson) {         console.log(JSON.stringify(myJson))  });
     }
     render() {
 
@@ -64,4 +64,4 @@ class pieChart extends Component {
         )
     }
 }
-export default pieChart;
+export default PieChartPage;

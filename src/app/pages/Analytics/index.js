@@ -2,8 +2,8 @@ import React, {Component} from "react";
 import './styles.scss';
 import {Router, Link} from "@reach/router";
 import LineChartPage from "./LineChartPage";
-import barChart from "../Analytics";
-import pieChart from "../Analytics";
+import BarChartPage from "./BarChartPage";
+import PieChartPage from "./PieChartPage";
 class Analytics extends Component {
 
     componentDidMount() {
@@ -32,8 +32,8 @@ class Analytics extends Component {
                 <div>
                     <Router>
                         <LineChartPage path="linechart"></LineChartPage>
-                        <barChart path="barchart"></barChart>
-                        <pieChart path="piechart"></pieChart>
+                        <BarChartPage path="barchart"></BarChartPage>
+                        <PieChartPage path="piechart"></PieChartPage>
                     </Router>
                 </div>
                 {/* <div className="charts-container">
