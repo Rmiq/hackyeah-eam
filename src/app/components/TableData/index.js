@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Component} from "react";
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -7,14 +7,6 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-
-const fecz = fetch('https://api.nfz.gov.pl/queues?page=1&limit=10&format=json&case=1&province=07&loc' +
-            'ality=Warszawa').then(function (response) {
-    return response.json();
-})
-    .then(function (myJson) {
-        JSON.stringify(myJson);
-    });
 
 const CustomTableCell = withStyles(theme => ({
     head: {
@@ -98,8 +90,39 @@ function PlacesTable(props) {
     );
 }
 
+class TableData extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: []
+        }
+    }
+
+    componentDidMount() {
+        /*   fetch('https://api.nfz.gov.pl/queues?page=1&limit=10&format=json&case=1&province=07&loc' +
+                    'ality=Warszawa')
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                console.log(JSON.stringify(data.data[0].attributes))
+                console.log(JSON.stringify(data.data.lenght()))
+                this.setState(data)
+            }); */
+        fetch('https://api.nfz.gov.pl/queues?page=1&limit=10&format=json&case=1&province=07&loc' +
+                    'ality=Warszawa')
+            .then(response => response.json())
+            .then(data => this.setState({data}))
+
+    }
+    render() {
+        console.log(this.state.data)
+        return (<PlacesTable classes={this.props.classes}/>)
+    }
+}
+
 PlacesTable.propTypes = {
     classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(PlacesTable);
+export default withStyles(styles)(TableData);
