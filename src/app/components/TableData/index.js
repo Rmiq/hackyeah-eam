@@ -34,57 +34,32 @@ const styles = theme => ({
     }
 });
 
-let id = 0;
-function createData(name, calories, fat, carbs, protein) {
-    id += 1;
-    return {
-        id,
-        name,
-        calories,
-        fat,
-        carbs,
-        protein
-    };
-}
-
-const rows = [
-    createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-    createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-    createData('Eclair', 262, 16.0, 24, 6.0),
-    createData('Cupcake', 305, 3.7, 67, 4.3),
-    createData('Gingerbread', 356, 16.0, 49, 3.9)
-];
-
 function PlacesTable(props) {
-    const {classes} = props;
+    const {classes, places} = props;
 
     return (
         <Paper className={classes.root}>
             <Table className={classes.table}>
                 <TableHead>
                     <TableRow>
-                        <CustomTableCell>Dessert (100g serving)</CustomTableCell>
-                        <CustomTableCell numeric>Calories</CustomTableCell>
-                        <CustomTableCell numeric>Fat (g)</CustomTableCell>
-                        <CustomTableCell numeric>Carbs (g)</CustomTableCell>
-                        <CustomTableCell numeric>Protein (g)</CustomTableCell>
+                        <CustomTableCell>Nazwa</CustomTableCell>
+                        <CustomTableCell>Lokalizacja</CustomTableCell>
+                        <CustomTableCell>Dostępność</CustomTableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {rows.map(row => {
+                    {places && places.map(x => {
                         return (
-                            <TableRow className={classes.row} key={row.id}>
+                            <TableRow className={classes.row} key={x.attributes.place}>
                                 <CustomTableCell component="th" scope="row">
-                                    {row.name}
+                                    {x.attributes.place}
                                 </CustomTableCell>
-                                <CustomTableCell numeric>{row.calories}</CustomTableCell>
-                                <CustomTableCell numeric>{row.fat}</CustomTableCell>
-                                <CustomTableCell numeric>{row.carbs}</CustomTableCell>
-                                <CustomTableCell numeric>{row.protein}</CustomTableCell>
+                                <CustomTableCell numeric>{x.attributes.locality}</CustomTableCell>
+                                <CustomTableCell numeric>{x.attributes.dates.date}</CustomTableCell>
+
                             </TableRow>
                         );
-                    })}
-                </TableBody>
+                    })}</TableBody>
             </Table>
         </Paper>
     );
@@ -99,25 +74,22 @@ class TableData extends Component {
     }
 
     componentDidMount() {
-        /*   fetch('https://api.nfz.gov.pl/queues?page=1&limit=10&format=json&case=1&province=07&loc' +
-                    'ality=Warszawa')
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (data) {
-                console.log(JSON.stringify(data.data[0].attributes))
-                console.log(JSON.stringify(data.data.lenght()))
-                this.setState(data)
-            }); */
+
         fetch('https://api.nfz.gov.pl/queues?page=1&limit=10&format=json&case=1&province=07&loc' +
                     'ality=Warszawa')
             .then(response => response.json())
             .then(data => this.setState({data}))
 
     }
+
     render() {
-        console.log(this.state.data)
-        return (<PlacesTable classes={this.props.classes}/>)
+
+        return (
+
+            <div>
+
+                <PlacesTable places={this.state.data.data} classes={this.props.classes}/></div>
+        )
     }
 }
 
