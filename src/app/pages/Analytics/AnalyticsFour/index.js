@@ -1,25 +1,14 @@
 import React, {Component} from "react";
-
-
 import {
-    LineChart,
-    Line,
+    BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend
 } from 'recharts';
 
-class AnalyticsTwo extends Component {
+class AnalyticsFour extends Component {
 
     componentDidMount() {
-        const url = "https://0f9gctnbb6.execute-api.eu-central-1.amazonaws.com/hackyeah-eam/get-data";
-       fetch(url)
-           .then(function (response) {
-               return response.json();
-           })
-           .then(function (myJson) {
-               console.log(JSON.stringify(myJson));
-           });
+        
     }
     render() {
-
         const data = [
             {
                 name: 'Page A',
@@ -58,16 +47,24 @@ class AnalyticsTwo extends Component {
                 amt: 2100
             }
         ];
+
         return (
             <div className="analytics-heading">
                 <h4>Wykres liniowy</h4>
                 <div className="charts-container">
-                    <LineChart width={400} height={400} data={data}>
-                        <Line type="monotone" dataKey="uv" stroke="#8884d8"/>
-                    </LineChart>
+                <BarChart width={600} height={300} data={data}
+            margin={{top: 5, right: 30, left: 20, bottom: 5}}>
+                    <CartesianGrid strokeDasharray="3 3"/>
+                    <XAxis dataKey="name"/>
+                    <YAxis/>
+                    <Tooltip/>
+                    <Legend />
+                    <Bar dataKey="pv" fill="#8884d8" />
+                    <Bar dataKey="uv" fill="#82ca9d" />
+                    </BarChart>
                 </div>
             </div>
         )
     }
 }
-export default AnalyticsTwo;
+export default AnalyticsFour;
