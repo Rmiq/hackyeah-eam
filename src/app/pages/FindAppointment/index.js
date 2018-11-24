@@ -94,7 +94,10 @@ class FindAppointment extends Component {
 
               fetch("https://0f9gctnbb6.execute-api.eu-central-1.amazonaws.com/hackyeah-eam/add-data",{
                 method: 'POST',
-                body: values
+                headers: {
+                  "Content-Type": "application/json; charset=utf-8",
+                },
+                body: JSON.stringify(values)
               }).then((response)=> response.json()).then((res) => console.log(res))
               setSubmitting(false);
             }, 400);
