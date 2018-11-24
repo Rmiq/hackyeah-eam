@@ -8,13 +8,30 @@ import "./styles.scss";
 class PlacesMap extends Component {
 
     state = {
-        lat: 51.505,
-        lng: -0.09,
-        zoom: 13
+        lat:[],
+        lng: [],
+        zoom: 5
     }
-
+    
+componentWillMount(){
+    this.props.lati&& this.props.lati.data.map(x=>
+            
+        this.setState({
+            lat:x.attributes.latitude
+        })
+    )
+    this.props.long&&this.props.long.data.map(y=>
+        this.setState({
+            lng:y.attributes.latitude
+        })
+    )
+}
     render() {
+        
+      
+        
         const position = [this.state.lat, this.state.lng]
+        console.log(this.state.lat)
         return (
             <div className="map-container">
             <Map center={position} zoom={this.state.zoom}>

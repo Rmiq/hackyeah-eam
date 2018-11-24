@@ -9,7 +9,7 @@
     font-weight: 400;
   }
   .findAppointment-input {
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
     margin-bottom: 2.5rem;
     form {
@@ -21,7 +21,7 @@
         width: 50%;
         flex-direction: column;
         display: flex;
-        color: red;    
+        color: red;
         div {
           width: 400px;
           &.MuiSelect-root-119 {
@@ -30,7 +30,7 @@
         }
         input {
           min-width: 80%;
-        };
+        }
         &:first-of-type {
           width: 100%;
           color: black;
@@ -60,9 +60,8 @@
 }
 
 .bottom-container {
-    .bottom-inner {
-        display: grid;
-        grid-template-columns: 50wv 48wv; 
-    }
-
+  .bottom-inner {
+    display: grid;
+    grid-template-columns: 50wv 48wv;
+  }
 }
