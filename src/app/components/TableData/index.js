@@ -74,14 +74,14 @@ class TableData extends Component {
         }
     }
 
-    componentDidMount() {
+    // componentDidMount() {
 
-        fetch('https://api.nfz.gov.pl/queues?page=1&limit=10&format=json&case=1&province=07&loc' +
-                    'ality=Warszawa')
-            .then(response => response.json())
-            .then(data => this.setState({data}))
+    //     fetch('https://api.nfz.gov.pl/queues?page=1&limit=10&format=json&case=1&province=07&loc' +
+    //                 'ality=Warszawa')
+    //         .then(response => response.json())
+    //         .then(data => this.setState({data}))
 
-    }
+    // }
 
     render() {
 
@@ -89,7 +89,7 @@ class TableData extends Component {
 
             <div className="table-container">
 
-                <PlacesTable places={this.state.data.data} classes={this.props.classes}/></div>
+                <PlacesTable places={this.props.dataPlaces.data} classes={this.props.classes}/></div>
         )
     }
 }

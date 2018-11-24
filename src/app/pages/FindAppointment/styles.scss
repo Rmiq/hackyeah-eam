@@ -60,9 +60,9 @@
 }
 
 .bottom-container {
+    width: 100%;
     .bottom-inner {
-        display: grid;
-        grid-template-columns: 50wv 48wv; 
+        display: flex;
     }
 
 }
