@@ -6,7 +6,8 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <p>Tutaj bedzie nasz apka 3==></p>
+          <div class="topNav"></div>
+          <div class="sideNav"></div>
         </header>
       </div>
     );
