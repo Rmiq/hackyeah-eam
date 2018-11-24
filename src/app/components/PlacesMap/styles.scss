@@ -6,6 +6,7 @@
 }
 
 .leaflet-popup {
+    min-width: 300px;
     .leaflet-popup-content {
         margin: 20px 15px 10px;
         h2,p,span,ul {
@@ -13,6 +14,10 @@
         }
         ul {
             padding-left: 20px;
+        }
+        .submit-container {
+            display: flex;
+            justify-content: space-between;
         }
     }
 }

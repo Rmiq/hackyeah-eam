@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
+import Button from '@material-ui/core/Button';
 import "../../../../node_modules/leaflet/dist/leaflet.css"
 import "./styles.scss";
 
@@ -24,16 +25,16 @@ class PlacesMap extends Component {
                     <Popup>
                         <h2>Provider Name</h2>
                         <p>Locality, address</p>
-                        <div className="container">
+                        <div className="submit-container">
                             <div>
-                                <p>Dates:</p>
+                                <p>First visit:</p>
                                 <ul>
                                     <li>2018-11-12</li>
                                 </ul>
 
                             </div>
                             <div>
-                                <button>Umów wizytę</button>
+                                <Button variant="contained" color="primary"> Umów wizytę </Button>
                             </div>
                         </div>
                         
