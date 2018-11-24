@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import './styles.scss';
 import {Router, Link} from "@reach/router";
-import lineChart from "../Analytics";
+import LineChartPage from "./LineChartPage";
 import barChart from "../Analytics";
 import pieChart from "../Analytics";
 class Analytics extends Component {
@@ -31,7 +31,7 @@ class Analytics extends Component {
                 </div>
                 <div>
                     <Router>
-                        <lineChart path="linechart"></lineChart>
+                        <LineChartPage path="linechart"></LineChartPage>
                         <barChart path="barchart"></barChart>
                         <pieChart path="piechart"></pieChart>
                     </Router>

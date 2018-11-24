@@ -1,5 +1,7 @@
 import React, {Component} from "react";
-import './styles.scss';
+
+
+// import './styles.scss';
 
 import {
     LineChart,
@@ -15,7 +17,7 @@ import {
     Legend
 } from 'recharts';
 
-class lineChart extends Component {
+class LineChartPage extends Component {
 
     componentDidMount() {
 
@@ -79,4 +81,4 @@ class lineChart extends Component {
         )
     }
 }
-export default lineChart;
+export default LineChartPage;

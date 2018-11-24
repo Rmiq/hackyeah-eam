@@ -20,7 +20,7 @@ class App extends Component {
           <Router>
             <Homepage path="/"></Homepage>
             <FindAppointment path="znajdz-wizyte"></FindAppointment>
-            <Analytics path="dane-analityczne"></Analytics>
+            <Analytics path="dane-analityczne/*"></Analytics>
           </Router>
         </main>
       </div>

@@ -57,7 +57,15 @@ const InputFeedback = ({ error }) =>
   error ? <div className="">{error}</div> : null;
 
 class FindAppointment extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      dataPlaces: [],
+      submitCount: 0
+    }
+  }
   render() {
+    const { submitCount,dataPlaces } = this.state;
     return (
       <div className="findAppointment-container">
         <Formik
@@ -81,14 +89,14 @@ class FindAppointment extends Component {
           }}
           onSubmit={(values, { setSubmitting }) => {
             setTimeout(() => {
-              console.log(values);
+              this.setState({submitCount: submitCount + 1 })
               // alert(JSON.stringify(values, null, 2));
 
               fetch(
                 `https://api.nfz.gov.pl/queues?page=1&limit=10&format=json&case=${values.case}&province=01&benefit=${values.benefit}`
               )
                 .then(response => response.json())
-                .then(data => console.log(data));
+                .then(data => this.setState({ dataPlaces: data }));
 
 
               // fetch("https://0f9gctnbb6.execute-api.eu-central-1.amazonaws.com/hackyeah-eam/add-data",{
@@ -253,7 +261,8 @@ class FindAppointment extends Component {
           )}
         </Formik>
         <div className="bottom-container">
-        <TableData />
+        {console.log(dataPlaces)}
+        {submitCount === 0 ? null : dataPlaces.length != 0 ? <TableData dataPlaces={dataPlaces}/> : <span>Wyszukaj ponownie</span> }
         <PlacesMap />
        
         </div>
