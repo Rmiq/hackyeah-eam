@@ -21,6 +21,9 @@ class Header extends Component {
                         <Link className={`nav-link`} to="znajdz-wizyte">
                             <Button color="inherit" className={`nav-btn`}>Znajdź wizyte</Button>
                         </Link>
+                        <Link className={`nav-link`} to="dane-analityczne">
+                            <Button color="inherit" className={`nav-btn`}>Dane analityczne</Button>
+                        </Link>
                     </nav>
                 </div>
             </AppBar>
