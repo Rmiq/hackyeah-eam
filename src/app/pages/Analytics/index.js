@@ -31,6 +31,13 @@ class Analytics extends Component {
         return (
             <div className="analytics-heading">
                 <h1>Dane analityczne</h1>
+                <div className="analyticsSidebar">
+                    <ul>
+                        <li>Chart pierwszy</li>
+                        <li>Chart drugi</li>
+                        <li>Chart trzeci</li>
+                    </ul>
+                </div>
                 {/* <div className="charts-container">
                     <LineChart width={400} height={400} data={data}>
                         <Line type="monotone" dataKey="uv" stroke="#8884d8" />

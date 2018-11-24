@@ -1,4 +1,18 @@
-.charts-container {
-    display: flex;
-    flex-wrap: wrap;
+.analyticsSidebar {
+    ul {
+        margin-top: 5%;
+        display: flex;
+        justify-content: center;
+        justify-content: space-around;
+        li {
+            list-style-type: none;
+            cursor: pointer;
+            &:hover{
+                background-color:grey;
+                transition: 0.2s;
+            }
+        }
+        
+    }
+
 }
