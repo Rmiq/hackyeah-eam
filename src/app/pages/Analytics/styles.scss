@@ -8,8 +8,9 @@
             list-style-type: none;
             cursor: pointer;
             &:hover{
-                background-color:grey;
+                transform: scale(1.1);
                 transition: 0.2s;
+                color: blue;
             }
         }
         
