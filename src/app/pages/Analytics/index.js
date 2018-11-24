@@ -9,14 +9,20 @@ class Analytics extends Component {
     }
 
     componentDidMount() {
+        // fetch('https://0f9gctnbb6.execute-api.eu-central-1.amazonaws.com/hackyeah-eam/get-data')
+        // .then(results => {
+        //     return results.json();
+        // }).then(data => {
+        //     console.log(data);
+        // })
         fetch('https://0f9gctnbb6.execute-api.eu-central-1.amazonaws.com/hackyeah-eam/get-data')
-        .then(results => {
-            return results.json();
-        }).then(data => {
-            console.log(data);
-        })
+           .then(function (response) {
+               return response.json();
+           })
+           .then(function (myJson) {
+               console.log(JSON.stringify(myJson));
+           });
     }
-
     render() {
         return (
             <div className="analytics-heading">
