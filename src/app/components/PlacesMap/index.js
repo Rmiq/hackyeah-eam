@@ -8,15 +8,33 @@ import "./styles.scss";
 class PlacesMap extends Component {
 
     state = {
-        lat: 51.505,
-        lng: -0.09,
-        zoom: 13
+        lat:50,
+        lng: 50,
+        zoom: 5
     }
-
+    
+componentWillMount(){
+    this.props.lati&& this.props.lati.data.map(x=>
+            
+        this.setState({
+            lat:x.attributes.latitude
+        })
+    )
+    this.props.long&&this.props.long.data.map(y=>
+        this.setState({
+            lng:y.attributes.latitude
+        })
+    )
+}
     render() {
+        
+      
+        
         const position = [this.state.lat, this.state.lng]
+        console.log(this.state.lat)
         return (
             <div className="map-container">
+            {console.log('position',position)}
             <Map center={position} zoom={this.state.zoom}>
                 <TileLayer
                     attribution='Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community'

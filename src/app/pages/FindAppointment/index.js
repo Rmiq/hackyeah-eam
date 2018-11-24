@@ -91,9 +91,10 @@ class FindAppointment extends Component {
             setTimeout(() => {
               this.setState({submitCount: submitCount + 1 })
               // alert(JSON.stringify(values, null, 2));
-
+              let url =  `https://api.nfz.gov.pl/queues?page=1&limit=10&format=json&case=${values.case}&benefit=${values.benefit}${values.province !== "00" ? '&province=' + values.province : null}`
+              console.log(url);
               fetch(
-                `https://api.nfz.gov.pl/queues?page=1&limit=10&format=json&case=${values.case}&province=01&benefit=${values.benefit}`
+                url
               )
                 .then(response => response.json())
                 .then(data => this.setState({ dataPlaces: data }));
@@ -262,7 +263,7 @@ class FindAppointment extends Component {
         </Formik>
         <div className="bottom-container">
         {console.log(dataPlaces)}
-        {submitCount === 0 ? null : dataPlaces.length != 0 ? <div className="bottom-inner"><TableData dataPlaces={dataPlaces}/><PlacesMap /></div> : <span>Wyszukaj ponownie</span> }
+        {submitCount === 0 ? null : dataPlaces.length != 0 ? <div className="bottom-inner"><TableData dataPlaces={dataPlaces}/><PlacesMap lati={dataPlaces} long={dataPlaces} /></div> : <span>Wyszukaj ponownie</span> }
         
        
         </div>

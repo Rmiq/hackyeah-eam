@@ -15,6 +15,7 @@ class Analytics extends Component {
 
     componentDidMount() {
 
+<<<<<<< HEAD
         fetch('https://0f9gctnbb6.execute-api.eu-central-1.amazonaws.com/hackyeah-eam/get-data')
             .then(function (response) {
                 return response.json();
@@ -23,6 +24,8 @@ class Analytics extends Component {
                 console.log(JSON.stringify(myJson))
             });
 
+=======
+>>>>>>> 1d896dd9277a4061353d9a405e078adf395b1f2c
     }
     render() {
 
