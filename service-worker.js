@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/hackyeah-eam/precache-manifest.90c49eda06f302aaa0763c040eebbd71.js"
+  "/hackyeah-eam/precache-manifest.92823567ba5dc7fec5aaa2073f9de410.js"
 );
 
 workbox.clientsClaim();
