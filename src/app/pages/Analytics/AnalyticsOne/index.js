@@ -16,16 +16,24 @@ class AnalyticsOne extends Component {
 
    componentDidMount() {
 
-       const url = "https://0f9gctnbb6.execute-api.eu-central-1.amazonaws.com/hackyeah-eam/get-data?wojewodztwo=05";
-       fetch(url)
-           .then(function (response) {
-               return response.json();
-           })
-           .then(function (myJson) {
-               console.log(JSON.stringify(myJson));
-           });
-   }
-   render() {
+        const url = "https://0f9gctnbb6.execute-api.eu-central-1.amazonaws.com/hackyeah-eam/get-data?wojewodztwo=05";
+        fetch(url)
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (myJson) {
+                // console.log(JSON.stringify(myJson));
+            });
+    }
+
+    constructor(props) {
+        super(props);
+        this.state = {
+          dataPlaces: []
+        }
+    }
+
+    render() {
 
        return (
            <div className="analytics-heading">
