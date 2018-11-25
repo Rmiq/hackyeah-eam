@@ -28,7 +28,7 @@ class AnalyticsFour extends Component {
         return (
             <div className="analytics-heading">
                 <h2>Aktywność województw</h2>
-                <p>Statystyka pokazująca aktywnosc danych województw oraz liczbe wizyt porzuconych</p>
+                <p>Statystyka pokazująca aktywność danych województw oraz liczbe wizyt porzuconych</p>
                 <div className="charts-container">
                 <BarChart width={800} height={300} data={this.state.dataPlaces} margin={{top: 20, right: 30, left: 20, bottom: 5}}>
                     <CartesianGrid strokeDasharray="3 3"/>

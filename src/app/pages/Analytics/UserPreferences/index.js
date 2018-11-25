@@ -31,11 +31,10 @@ class UserPreferences extends Component {
     render() {
         return (
             <div className="analytics-heading">
-                <h2>Preferencje uytkowników</h2>
-                <p>Preferencje uytkowników dotyczące wyników wyszukiwania</p>
+                <h2>Preferencje użytkowników</h2>
+                <p>Preferencje użytkowników dotyczące wyników wyszukiwania</p>
                 <div className="charts-container">
-                {this.state.dataPlaces != null && console.log(this.state.dataPlaces)}
-                    {console.log( this.state.dataPlaces ? this.state.dataPlaces : null)}
+
                     <PieChart width={800} height={400}>
                         <Pie isAnimationActive={false} data={this.state.dataPlaces} cx={200} cy={200} outerRadius={80} fill="#8884d8" label/>
                         <Tooltip/>
