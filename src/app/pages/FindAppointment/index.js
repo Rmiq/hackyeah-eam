@@ -73,6 +73,20 @@ class FindAppointment extends Component {
   handleSelectRow = () => {
     console.log('parent')
   }
+
+  sortData(){
+    let data = this.state.dataPlaces;
+    console.log(data);
+    return data;
+  }
+
+  calculcateDist(a,b,c,d){
+    let latDiff = Math.abs(c - a);
+    let longDiff = Math.abs(d - b);
+    let distance = Math.sqrt(Math.pow(latDiff,2) + Math.pow(longDiff, 2));
+    return distance;
+}
+
   render() {
     const {submitCount, dataPlaces} = this.state;
     return (
@@ -124,7 +138,7 @@ class FindAppointment extends Component {
             this.setState({userLat: lat, userLng: long});
           });
 
-          fetch(`https://api.nfz.gov.pl/queues?page=1&limit=10&format=json&case=${values.case}&benefit=${values.benefit}${values.province !== "00" ? '&province=' + values.province : ''}`)
+          fetch(`https://api.nfz.gov.pl/queues?page=1&limit=20&format=json&case=${values.case}&benefit=${values.benefit}${values.province !== "00" ? '&province=' + values.province : ''}`)
           .then((values) => {
             return values.json();           
           }).then((val) => {
@@ -271,7 +285,7 @@ class FindAppointment extends Component {
         </Formik>
         <div className="bottom-container">
 
-          {submitCount === 0 ? null : dataPlaces.length != 0 ? <div className="bottom-inner"><TableData onSelectRow={this.handleSelectRow} dataPlaces={dataPlaces}/><PlacesMap dataPlaces={dataPlaces} token={this.state.token} userLng={this.state.userLng} userLat={this.state.userLat}/></div> : <span>Wyszukaj ponownie</span>}
+          {submitCount === 0 ? null : dataPlaces.length != 0 ? <div className="bottom-inner"><TableData onSelectRow={this.handleSelectRow} dataPlaces={this.sortData()}/><PlacesMap dataPlaces={this.sortData()} token={this.state.token} userLng={this.state.userLng} userLat={this.state.userLat}/></div> : <span>Wyszukaj ponownie</span>}
         </div>
       </div>
     );

@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 
 import "../../../../node_modules/leaflet/dist/leaflet.css"
 import "./styles.scss";
+import { callbackify } from "util";
 
 
 
@@ -53,6 +54,13 @@ componentDidMount(){
         address:this.props.dataPlaces.data.map(el=>el.attributes.address)
     })
 }
+
+calculcateDist(a,b,c,d){
+    let latDiff = Math.abs(c - a);
+    let longDiff = Math.abs(d - b);
+    let distance = Math.sqrt(Math.pow(latDiff,2) + Math.pow(longDiff, 2));
+    return distance;
+}
     render() {
 
         return (
@@ -63,7 +71,7 @@ componentDidMount(){
                     attribution='Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community'
                     url='https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}' />
                 
-               
+                <Marker position={[this.props.userLat, this.props.userLng]} className="home"> </Marker>
                 {this.state.lat.map((el,i)=> <Marker key={i} id={i} position={[el,this.state.lng[i]]}>
 
                     <Popup>
@@ -83,7 +91,7 @@ componentDidMount(){
                             </div>
                         </div>
                         <a target="_blank" href={`https://www.google.com/search?q=${this.state.provider[i]}`}>Dowiedz się więcej</a>
-                        <p> Distance: `${}`</p>
+                        <p>Odległość: { Math.round(this.calculcateDist(el,this.state.lng[i],this.props.userLat, this.props.userLng)*111.1)}km</p>
                         
 
                     </Popup>
