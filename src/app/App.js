@@ -18,7 +18,7 @@ class App extends Component {
         <main className="app-container">
           <Router>
             <FindAppointment path="/"></FindAppointment>
-            <Analytics path="dane-analityczne/*"></Analytics>
+            <Analytics path="dane-analityczne/*/"></Analytics>
           </Router>
         </main>
       </div>
