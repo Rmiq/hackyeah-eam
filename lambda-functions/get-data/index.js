@@ -35,15 +35,43 @@ class Database {
 
 exports.handler = (event, context, callback) => {
     const database = new Database(config);
-    const query = `SELECT * FROM records`;
-    let responseBody = '';
+    let response = {
+        "statusCode": 200,
+        "headers": {
+            "Access-Control-Allow-Origin": "*"
+        },
+        "isBase64Encoded": false
+    };
+    var filters = [];
+    var values = [];
+    for (var key in event.query) {
+        if (event.query.hasOwnProperty(key)) {
+            filters.push(key);
+            values.push(event.query[key]);
+        }
+    };
+    let filtersAdd = "";
+    for (let i = 0 ; i < filters.length; i++){
+        if( i == 0){
+            filtersAdd += "WHERE ";
+        }
+        if(i+1 ==filters.length){
+            filtersAdd +=`${filters[i]} = "${values[i]}"`;
+        } else{
+            filtersAdd += `${filters[i]} = "${values[i]}" AND `;
+        }
+    }
     
-    database.query(query).then(response => {
-        responseBody = response;
-        console.log("test imit");
+    const query = `SELECT * FROM records ${filtersAdd}`;
+
+    //context.succeed(event.query);
+    
+
+    database.query(query).then(rows => {
+        response.query = JSON.stringify(rows);
         return database.close();
     }).then(() => {
-        context.succeed(responseBody);
+        context.succeed(response);
     }).catch(err => {
         console.log(err);
         return database.close().then((err) => {

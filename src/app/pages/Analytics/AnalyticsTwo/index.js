@@ -37,7 +37,7 @@ class AnalyticsTwo extends Component {
         const COLORS = ['#d50000', '#039be5','#00c853','#ff7043','#fff176'];
         return (
             <div className="analytics-heading">
-                <h2>Najczesciej szukane uslugi</h2>
+                <h2>Najczęściej szukane usługi</h2>
                 <p>Która z usług cieszyła się największą popularnością</p>
                 <div className="charts-container">
 {/*                 {this.state.dataPlaces != null && console.log(this.state.dataPlaces)} */}

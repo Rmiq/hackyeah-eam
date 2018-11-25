@@ -25,7 +25,7 @@ class AnalyticsOne extends Component {
        return (
            <div className="analytics-heading">
                <h2>Mapa wyszukiwań placówek</h2>
-               <p>Mapa ciepła wskazująca placówki który były wyszukiwane najczęściej</p>
+               <p>Mapa ciepła wskazująca placówki które były wyszukiwane najczęściej</p>
                {this.state.dataPlaces && this.state.dataPlaces.length > 0 ? <HeatMap dataPlaces={this.state.dataPlaces} /> : null}
            </div>
        )
