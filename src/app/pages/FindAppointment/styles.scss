@@ -1,6 +1,15 @@
 .findAppointment-container {
   display: flex;
   flex-wrap: wrap;
+  .table-container > div {
+    height: 600px;
+  }
+  .table-container > div > table {
+    min-width: auto;
+  }
+  .map-container {
+    width: 50%;
+  }
   thead th{
     background-color: #3f51b5;
   }
