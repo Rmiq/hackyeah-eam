@@ -17,11 +17,12 @@ class UserPreferences extends Component {
                   {name: 'Group C', value: 300}, {name: 'Group D', value: 200},
                   {name: 'Group E', value: 278}, {name: 'Group F', value: 189}]
         }
+        console.log(this.state)
     }
     
     componentDidMount() {
         
-        const url = "https://0f9gctnbb6.execute-api.eu-central-1.amazonaws.com/hackyeah-eam/get-data/most-common?criteria=benefit";
+        const url = "https://0f9gctnbb6.execute-api.eu-central-1.amazonaws.com/hackyeah-eam/get-data/most-common?criteria=preferences";
         fetch(url)
             .then(response => response.json())
             .then(data => this.setState({ dataPlaces: data.query }));
