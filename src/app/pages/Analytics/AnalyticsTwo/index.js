@@ -4,11 +4,13 @@ import {
     Pie,
     PieChart,
     Tooltip,
-    AreaChart,
-    Area,
+    BarChart,
+    Bar,
     XAxis,
     YAxis,
     CartesianGrid,
+    Legend,
+    Cell
 } from 'recharts';
 
 class AnalyticsTwo extends Component {
@@ -52,14 +54,14 @@ class AnalyticsTwo extends Component {
                         <Pie isAnimationActive={false} data={this.state.dataPlaces} cx={200} cy={200} outerRadius={80} fill="#8884d8" label/>
                         <Tooltip/>
                     </PieChart>
-                    <AreaChart width={600} height={400} data={data}
-            margin={{top: 10, right: 30, left: 0, bottom: 0}}>
+                    <BarChart width={600} height={300} data={this.state.dataPlaces} margin={{top: 20, right: 30, left: 20, bottom: 5}}>
                         <CartesianGrid strokeDasharray="3 3"/>
                         <XAxis dataKey="name"/>
                         <YAxis/>
                         <Tooltip/>
-                        <Area type='monotone' dataKey='uv' stroke='#8884d8' fill='#8884d8' />
-                    </AreaChart>
+                        <Legend />
+                        <Bar dataKey="value" name="test" stackId="a" fill="#82ca9d" />
+                    </BarChart>
                 </div>
             </div>
         )
