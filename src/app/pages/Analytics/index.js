@@ -30,7 +30,7 @@ class Analytics extends Component {
                         <Link to="AnalyticsFour">Aktywność wojewodztw</Link>
                         </MenuItem>
                         <MenuItem>
-                        <Link to="DistanceMap">Odległość od placówki</Link>
+                        <Link to="DistanceMap">Aktywność uztkowników</Link>
                         </MenuItem>
                         <MenuItem>
                         <Link to="UserPreferences">Preferencje uytkowników</Link>
