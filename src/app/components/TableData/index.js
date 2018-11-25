@@ -45,6 +45,7 @@ function PlacesTable(props) {
                     <TableRow>
                         <CustomTableCell>Nazwa</CustomTableCell>
                         <CustomTableCell>Lokalizacja</CustomTableCell>
+                        <CustomTableCell>Ulica</CustomTableCell>
                         <CustomTableCell>Dostępność</CustomTableCell>
                     </TableRow>
                 </TableHead>
@@ -56,6 +57,7 @@ function PlacesTable(props) {
                                     {x.attributes.provider}
                                 </CustomTableCell>
                                 <CustomTableCell key={x.attributes.id} numeric>{x.attributes.locality}</CustomTableCell>
+                                <CustomTableCell key={x.attributes.id} numeric>{x.attributes.address}</CustomTableCell>
                                 <CustomTableCell key={x.attributes.id} numeric>{x.attributes.dates.date}</CustomTableCell>
 
                             </TableRow>
