@@ -10,7 +10,6 @@ import {
     YAxis,
     CartesianGrid,
     Legend,
-    Cell
 } from 'recharts';
 
 class AnalyticsTwo extends Component {

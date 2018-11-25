@@ -11,15 +11,7 @@ import Paper from '@material-ui/core/Paper';
 import {
     PieChart,
     Pie,
-    ComposedChart,
-    Line,
-    Area,
-    Bar,
-    XAxis,
-    YAxis,
-    CartesianGrid,
     Tooltip,
-    Legend
 } from 'recharts';
 
 const CustomTableCell = withStyles(theme => ({

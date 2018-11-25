@@ -2,15 +2,6 @@ import React, {Component} from "react";
 import HeatMap from "../../../components/HeatMap";
 import './styles.scss';
 
-import {
-   BarChart,
-   CartesianGrid,
-   XAxis,
-   YAxis,
-   Tooltip,
-   Bar,
-   Legend
-} from 'recharts';
 
 class AnalyticsOne extends Component {
 
