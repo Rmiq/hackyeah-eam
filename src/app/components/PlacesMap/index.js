@@ -10,7 +10,7 @@ class PlacesMap extends Component {
     state = {
         lat: [],
         lng: [],
-        place:[],
+        provider:[],
         locality:[],
         date:[],
         phone:[],
@@ -40,7 +40,7 @@ componentDidMount(){
     this.setState({ 
         lat:this.props.dataPlaces.data.map(x=>x.attributes.latitude),
         lng:this.props.dataPlaces.data.map(y=>y.attributes.longitude),
-        place:this.props.dataPlaces.data.map(el=>el.attributes.place),
+        provider:this.props.dataPlaces.data.map(el=>el.attributes.provider),
         locality:this.props.dataPlaces.data.map(el=>el.attributes.locality),
         date:this.props.dataPlaces.data.map(el=>el.attributes.dates.date),
         phone:this.props.dataPlaces.data.map(el=>el.attributes.phone),
@@ -71,10 +71,10 @@ componentDidMount(){
                     url='https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}' />
                 
                
-                {this.state.lat.map((el,i)=> <Marker key={i} position={[el,this.state.lng[i]]}>
+                {this.state.lat.map((el,i)=> <Marker key={i} id={i} position={[el,this.state.lng[i]]}>
 
                     <Popup>
-                        <h2>{this.state.place[i]}</h2>
+                        <h2>{this.state.provider[i]}</h2>
                         <p>{this.state.locality[i]}</p>
                         <p>{this.state.address[i]}</p>
                         <div className="submit-container">
@@ -86,7 +86,7 @@ componentDidMount(){
 
                             </div>
                             <div>
-                                <Button variant="contained" color="primary" onClick={(e) => {this.handleClick(e, el, this.state.place[i],this.state.lng[i])}}> Umów wizytę </Button>
+                                <Button variant="contained" color="primary" onClick={(e) => {this.handleClick(e, el, this.state.provider[i],this.state.lng[i])}}> Umów wizytę </Button>
                             </div>
                         </div>
                         
