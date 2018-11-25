@@ -108,34 +108,44 @@ class FindAppointment extends Component {
             submitCount: submitCount + 1,
             isActive: false
           })
-          const tempValues = {
+          let tempValues = {
             ...values,
             userLat: this.state.userLat,
             userLng: this.state.userLng
           }
-          Promise.all([
-            fetch('https://maps.googleapis.com/maps/api/geocode/json?address=' + values.locality + values.street + values.place + '&key=AIzaSyCkzWzc1L1vUApjc-u5AsRaLuKz-HT-yNc'),
-            fetch(`https://api.nfz.gov.pl/queues?page=1&limit=10&format=json&case=${values.case}&benefit=${values.benefit}${values.province !== "00" ? '&province=' + values.province : ''}`)
-          ]).then((values) => {
+          
+          fetch('https://maps.googleapis.com/maps/api/geocode/json?address=' + values.locality + values.street + values.place + '&key=AIzaSyCkzWzc1L1vUApjc-u5AsRaLuKz-HT-yNc')
+          .then(res => res.json())
+          .then(response => {
+            let lat = response.results[0].geometry.location.lat;
+            let long = response.results[0].geometry.location.lng;
+            tempValues.userLat = lat;
+            tempValues.userLng = long;
+            this.setState({userLat: lat, userLng: long});
+          });
+
+          fetch(`https://api.nfz.gov.pl/queues?page=1&limit=10&format=json&case=${values.case}&benefit=${values.benefit}${values.province !== "00" ? '&province=' + values.province : ''}`)
+          .then((values) => {
             return values.json();           
           }).then((val) => {
-            let lat = val[0].results[0].geometry.location.lat;
-            let long = val[0].results[0].geometry.location.lng;
-            this.setState({userLat: lat, userLng: long, dataPlaces: val[1]});
-            console.log(tempValues);
-            fetch("https://0f9gctnbb6.execute-api.eu-central-1.amazonaws.com/hackyeah-eam/add-data", {
+            this.setState({dataPlaces: val});
+          });
+
+          setTimeout(function(){ 
+              fetch("https://0f9gctnbb6.execute-api.eu-central-1.amazonaws.com/hackyeah-eam/add-data", {
                     method: 'POST',
                     headers: {
                       "Content-Type": "application/json; charset=utf-8"
                     },
                     body: JSON.stringify(tempValues)
-              }).then((res) => res.json())
-                .then((response) => {
-                  console.log(response);
-                  this.setState({token: response.token});
-                  resetForm();
-              })
-          });
+            }).then((res) => res.json())
+              .then((response) => {
+                console.log(response);
+                // this.setState({token: response.token});
+                resetForm();
+            });
+           }, 500);
+          
 
          
           setSubmitting(false)}}>

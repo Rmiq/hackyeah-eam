@@ -50,22 +50,9 @@ componentDidMount(){
         phone:this.props.dataPlaces.data.map(el=>el.attributes.phone),
         address:this.props.dataPlaces.data.map(el=>el.attributes.address)
     })
-    
-//    this.setState(prevState => ({
-//        position: {
-           
-//            lat: [...prevState.lat,this.props.lati.data]
-//        }
-//    }))
-// this.setState({position: [...this.state.position, this.props.lati.data]})
-
 }
     render() {
-        
-      
-        
-        // const position = [this.state.lat, this.state.lng]
-        
+
         return (
             <div className="map-container">
       
