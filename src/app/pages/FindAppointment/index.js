@@ -82,10 +82,11 @@ class FindAppointment extends Component {
             case: "",
             province: "00",
             benefit: "",
-            provider: "",
+            preferences: "",
             street: "",
             locality: "",
-            place: ""
+            place: "",
+            preferences: 'time'
           }}
           validate={values => {
             let errors = {};
@@ -94,6 +95,13 @@ class FindAppointment extends Component {
             } else if (!values.case) {
               errors.case = "Pole wymagane";
             }
+            else if (!values.locality) {
+              errors.locality = "Pole wymagane";
+            }else if (!values.street) {
+              errors.street = "Pole wymagane";
+            }else if (!values.place) {
+              errors.place = "Pole wymagane";
+            }
             return errors;
           }}
           onSubmit={(values, { setSubmitting, resetForm }) => {
@@ -101,7 +109,8 @@ class FindAppointment extends Component {
               this.setState({submitCount: submitCount + 1,
               isActive: false })
               // alert(JSON.stringify(values, null, 2));
-              let url =  `https://api.nfz.gov.pl/queues?page=1&limit=10&format=json&case=${values.case}&benefit=${values.benefit}${values.province !== "00" ? '&province=' + values.province : ''}${values.locality !== "" ? '&locality=' + values.locality : ''}${values.street !== "" ? '&street=' + values.street : ''}${values.place !== "" ? '&place=' + values.place : ''}${values.provider !== "" ? '&provider=' + values.provider : ''}`
+              let url =  `https://api.nfz.gov.pl/queues?page=1&limit=10&format=json&case=${values.case}&benefit=${values.benefit}${values.province !== "00" ? '&province=' + values.province : ''}`
+              console.log(url)
               fetch(
                 url
               )
@@ -175,6 +184,7 @@ class FindAppointment extends Component {
                   />
                   {errors.benefit && touched.benefit && errors.benefit}
                 </div>
+                
                 <div className="singleInput-container">
                   <Select
                     name="province"
@@ -208,11 +218,12 @@ class FindAppointment extends Component {
                   </Select>
                   {errors.province && touched.province && errors.province}
                 </div>
+                <h2>Twoje dane</h2>
                 <div className="singleInput-container">
                   <TextField
                     type="locality"
                     id="locality"
-                    label="Miejscowość"
+                    label="Miejscowość *"
                     className="textField"
                     value={values.locality}
                     onChange={handleChange}
@@ -226,7 +237,7 @@ class FindAppointment extends Component {
                   <TextField
                     type="street"
                     id="street"
-                    label="Ulica"
+                    label="Ulica *"
                     className="textField"
                     value={values.street}
                     onChange={handleChange}
@@ -239,7 +250,7 @@ class FindAppointment extends Component {
                   <TextField
                     type="place"
                     id="place"
-                    label="Numer ulicy"
+                    label="Numer ulicy *"
                     className="textField"
                     value={values.place}
                     onChange={handleChange}
@@ -249,19 +260,17 @@ class FindAppointment extends Component {
                   {errors.place && touched.place && errors.place}
                 </div>
                 <div className="singleInput-container">
-                  <TextField
-                    type="provider"
-                    id="provider"
-                    label="Placówka"
-                    className="textField"
-                    value={values.provider}
+                  <Select
+                    name="preferences"
+                    value={values.preferences}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    margin="normal"
-                  />
-                  {errors.provider && touched.provider && errors.provider}
+                  >
+                    <MenuItem value="distance">Odległość</MenuItem>
+                    <MenuItem value="time">Czas oczekiwania</MenuItem>
+                  </Select>
+                  {errors.province && touched.province && errors.province}
                 </div>
-
                 <Button
                   type="submit"
                   disabled={isSubmitting}
