@@ -17,7 +17,25 @@ class PlacesMap extends Component {
         address:[],
         zoom: 6
     }
+handleClick(e, lat,provider, lng){
+    const values={
+        provider:provider,
+        token:this.props.token,
+        latitude:lat,
+        longitude:lng
+    }
     
+    fetch("https://0f9gctnbb6.execute-api.eu-central-1.amazonaws.com/hackyeah-eam/update-data",{
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+        },
+        body: JSON.stringify(values)
+      }).then((response)=> response.json()).then((res) => this.setState({
+        token:res.token
+      })) 
+}
+
 componentDidMount(){
     this.setState({ 
         lat:this.props.dataPlaces.data.map(x=>x.attributes.latitude),
@@ -54,6 +72,7 @@ componentDidMount(){
                 
                
                 {this.state.lat.map((el,i)=> <Marker key={i} position={[el,this.state.lng[i]]}>
+
                     <Popup>
                         <h2>{this.state.place[i]}</h2>
                         <p>{this.state.locality[i]}</p>
@@ -67,7 +86,7 @@ componentDidMount(){
 
                             </div>
                             <div>
-                                <Button variant="contained" color="primary"> Umów wizytę </Button>
+                                <Button variant="contained" color="primary" onClick={(e) => {this.handleClick(e, el, this.state.place[i],this.state.lng[i])}}> Umów wizytę </Button>
                             </div>
                         </div>
                         

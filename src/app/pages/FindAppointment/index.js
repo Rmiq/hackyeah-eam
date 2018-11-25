@@ -62,7 +62,9 @@ class FindAppointment extends Component {
     this.state = {
       dataPlaces: [],
       submitCount: 0,
+      token:"",
       isActive: true
+
     }
   }
   handleClick = ()=>{
@@ -113,8 +115,10 @@ class FindAppointment extends Component {
                   "Content-Type": "application/json; charset=utf-8",
                 },
                 body: JSON.stringify(values)
-              }).then((response)=> response.json()).then((res) => console.log(res));
-              resetForm();
+              }).then((response)=> response.json()).then((res) => this.setState({
+                token:res.token
+              }))
+              resetForm(); 
               setSubmitting(false);
             
           }}
@@ -275,7 +279,7 @@ class FindAppointment extends Component {
         </Formik>
         <div className="bottom-container">
        
-        {submitCount === 0 ? null : dataPlaces.length != 0 ? <div className="bottom-inner"><TableData dataPlaces={dataPlaces}/><PlacesMap dataPlaces={dataPlaces} /></div> : <span>Wyszukaj ponownie</span> }
+        {submitCount === 0 ? null : dataPlaces.length != 0 ? <div className="bottom-inner"><TableData dataPlaces={dataPlaces}/><PlacesMap dataPlaces={dataPlaces} token={this.state.token} /></div> : <span>Wyszukaj ponownie</span> }
         
        
         </div>
