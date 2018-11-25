@@ -17,7 +17,6 @@ class UserPreferences extends Component {
                   {name: 'Group C', value: 300}, {name: 'Group D', value: 200},
                   {name: 'Group E', value: 278}, {name: 'Group F', value: 189}]
         }
-        console.log(this.state)
     }
     
     componentDidMount() {

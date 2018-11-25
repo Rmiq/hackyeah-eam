@@ -38,8 +38,6 @@ class AnalyticsTwo extends Component {
                 <h2>Najczęściej szukane usługi</h2>
                 <p>Która z usług cieszyła się największą popularnością</p>
                 <div className="charts-container">
-                {this.state.dataPlaces != null && console.log(this.state.dataPlaces)}
-                    {console.log( this.state.dataPlaces ? this.state.dataPlaces : null)}
                     <PieChart width={800} height={400}>
                         <Pie isAnimationActive={false} data={this.state.dataPlaces} cx={200} cy={200} outerRadius={80} fill="#8884d8" label/>
                         <Tooltip/>

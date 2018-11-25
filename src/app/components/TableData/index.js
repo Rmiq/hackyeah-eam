@@ -78,24 +78,13 @@ class TableData extends Component {
             data: []
         }
     }
-    // handleRowTableClick = () => {
-    //     this.props.onSelectRow('sss')
-    // }
-    // componentDidMount() {
 
-    //     fetch('https://api.nfz.gov.pl/queues?page=1&limit=10&format=json&case=1&province=07&loc' +
-    //                 'ality=Warszawa')
-    //         .then(response => response.json())
-    //         .then(data => this.setState({data}))
-
-    // }
 
     render() {
 
         return (
 
             <div className="table-container">
-            {console.log(this.props.dataPlaces)}
                 <PlacesTable places={this.props.dataPlaces.data ? this.props.dataPlaces.data : null} classes={this.props.classes}/></div>
         )
     }

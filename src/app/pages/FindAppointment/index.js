@@ -76,7 +76,6 @@ class FindAppointment extends Component {
 
   sortData(){
     let data = this.state.dataPlaces;
-      console.log(data);
       data.data.forEach((el)=>{
         let dis = this.calculcateDist(el.attributes.latitude, el.attributes.longitude, this.state.userLat, this.state.userLng);
         el.distance = dis;
@@ -170,7 +169,6 @@ class FindAppointment extends Component {
                     body: JSON.stringify(tempValues)
             }).then((res) => res.json())
               .then((response) => {
-                console.log(response);
                 this.setState({token: response.token});
                 resetForm();
             });
@@ -301,7 +299,7 @@ class FindAppointment extends Component {
         </Formik>
         <div className="bottom-container">
 
-          {submitCount === 0 ? null : dataPlaces.length != 0 ? <div className="bottom-inner"><TableData onSelectRow={this.handleSelectRow} dataPlaces={this.sortData()}/><PlacesMap dataPlaces={this.sortData()} token={this.state.token} userLng={this.state.userLng} userLat={this.state.userLat}/></div> : <span>Wyszukaj ponownie</span>}
+          {submitCount === 0 ? null : dataPlaces.length != 0 ? <div className="bottom-inner"><TableData onSelectRow={this.handleSelectRow} dataPlaces={this.sortData()}/><PlacesMap dataPlaces={this.sortData()} token={this.state.token} userLng={this.state.userLng} userLat={this.state.userLat}/></div> : <span className="search-more">Wyszukaj ponownie</span>}
         </div>
       </div>
     );

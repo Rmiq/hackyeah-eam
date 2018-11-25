@@ -91,6 +91,10 @@
 
 .bottom-container {
     width: 100%;
+    text-align: center;
+    .search-more{ 
+font-size: 22px;
+    }
     .bottom-inner {
         display: flex;
     }
