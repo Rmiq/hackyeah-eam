@@ -35,17 +35,42 @@ class Database {
 
 exports.handler = (event, context, callback) => {
     const database = new Database(config);
-    var date = new Date().toISOString().slice(0,10);
-    const query = `UPDATE innodb.records SET isFinalized = 'true', provider = '${event.body.provider}' , data = '${date}', latitude = '${event.body.latitude}', longitude = '${event.body.longitude}' WHERE validationToken = '${event.body.token}'`;
     let response = {
         "statusCode": 200,
         "headers": {
             "Access-Control-Allow-Origin": "*"
         },
-        "isBase64Encoded": false
+        "isBase64Encoded": false,
+        body: []
+        
     };
+    
+    let query = `SELECT Count(*) as zapytania, wojewodztwo FROM records where isFinalized = 'false' GROUP BY wojewodztwo`;
+    let query2 = `SELECT Count(*) as sfinalizowane, wojewodztwo FROM innodb.records where isFinalized = 'true' GROUP BY wojewodztwo`;
+
+    //context.succeed(event.query);
+    
+
     database.query(query).then(rows => {
-        response.body = JSON.stringify(rows);
+        rows.forEach((row)=>{
+            response.body.push(row);
+        });
+        return database.query(query2);
+        
+    }).then((rows2) => {    
+        rows2.forEach((row,i)=>{
+            let finded = false;
+            response.body.forEach((existingRow)=>{
+                if(row.wojewodztwo == existingRow.wojewodztwo){
+                    console.log(row.sfinalizowane);
+                    existingRow.sfinalizowane = row.sfinalizowane;
+                    finded = true;
+                } else if(finded) {
+                    console.log(finded);
+                     existingRow.sfinalizowane = 0;
+                }
+            })
+        })
         return database.close();
     }).then(() => {
         context.succeed(response);
