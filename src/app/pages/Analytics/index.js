@@ -10,6 +10,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import AnalyticsOne from "./AnalyticsOne";
 import AnalyticsTwo from "./AnalyticsTwo";
 import AnalyticsThree from "./AnalyticsThree";
+import AnalyticsFour from "./AnalyticsFour";
 class Analytics extends Component {
 
     componentDidMount() {
@@ -19,31 +20,36 @@ class Analytics extends Component {
                 return response.json();
             })
             .then(function (myJson) {
-                console.log(JSON.stringify(myJson))
+                // console.log(JSON.stringify(myJson))
             });
+
     }
     render() {
 
         return (
             <div className="analytics">
                 <div className="sideNav">
-                <MenuList>
-                    <MenuItem>
-                    <Link to="AnalyticsOne">Mapa wyszukiwań szpitali</Link>
-                    </MenuItem>
-                    <MenuItem>
-                    <Link to="AnalyticsTwo">Najczęściej szukane usługi</Link>
-                    </MenuItem>
-                    <MenuItem>
-                    <Link to="AnalyticsThree">Publiczne vs. prywatne</Link>
-                    </MenuItem>
-                </MenuList>
+                    <MenuList>
+                        <MenuItem>
+                        <Link to="AnalyticsOne">Mapa wyszukiwań szpitali</Link>
+                        </MenuItem>
+                        <MenuItem>
+                        <Link to="AnalyticsTwo">Najczęściej szukane usługi</Link>
+                        </MenuItem>
+                        <MenuItem>
+                        <Link to="AnalyticsThree">Publiczne vs. prywatne</Link>
+                        </MenuItem>
+                        <MenuItem>
+                        <Link to="AnalyticsFour">Najpopularniejsze kliniki</Link>
+                        </MenuItem>
+                    </MenuList>
                 </div>
 
                 <Router>
                     <AnalyticsOne path="AnalyticsOne"></AnalyticsOne>
                     <AnalyticsTwo path="AnalyticsTwo"></AnalyticsTwo>
                     <AnalyticsThree path="AnalyticsThree"></AnalyticsThree>
+                    <AnalyticsFour path="AnalyticsFour"></AnalyticsFour>
                 </Router>
             </div>
         )
