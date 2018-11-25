@@ -3,29 +3,16 @@ import './styles.scss';
 import {Router, Link} from "@reach/router";
 import MenuList from '@material-ui/core/MenuList';
 import MenuItem from '@material-ui/core/MenuItem';
-import { withStyles } from '@material-ui/core/styles';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
 
 import AnalyticsOne from "./AnalyticsOne";
 import AnalyticsTwo from "./AnalyticsTwo";
 import AnalyticsThree from "./AnalyticsThree";
 import AnalyticsFour from "./AnalyticsFour";
+import DistanceMap from "./DistanceMap";
+import UserPreferences from "./UserPreferences";
 class Analytics extends Component {
 
-    componentDidMount() {
-
-        fetch('https://0f9gctnbb6.execute-api.eu-central-1.amazonaws.com/hackyeah-eam/get-data')
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (myJson) {
-                // console.log(JSON.stringify(myJson))
-            });
-
-    }
     render() {
-
         return (
             <div className="analytics">
                 <div className="sideNav">
@@ -42,6 +29,12 @@ class Analytics extends Component {
                         <MenuItem>
                         <Link to="AnalyticsFour">Aktywność wojewodztw</Link>
                         </MenuItem>
+                        <MenuItem>
+                        <Link to="DistanceMap">Aktywność uztkowników</Link>
+                        </MenuItem>
+                        <MenuItem>
+                        <Link to="UserPreferences">Preferencje uytkowników</Link>
+                        </MenuItem>
                     </MenuList>
                 </div>
 
@@ -50,6 +43,8 @@ class Analytics extends Component {
                     <AnalyticsTwo path="AnalyticsTwo"></AnalyticsTwo>
                     <AnalyticsThree path="AnalyticsThree"></AnalyticsThree>
                     <AnalyticsFour path="AnalyticsFour"></AnalyticsFour>
+                    <DistanceMap path="DistanceMap"></DistanceMap>
+                    <UserPreferences path="UserPreferences"></UserPreferences>
                 </Router>
             </div>
         )

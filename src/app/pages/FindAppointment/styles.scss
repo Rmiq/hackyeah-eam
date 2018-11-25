@@ -8,6 +8,16 @@
     font-size: 22px;
     font-weight: 400;
   }
+  h2 {
+      width: 100%;
+      text-align: center;
+      font-weight: 400;
+      margin-top: 2rem;
+      margin-bottom: 0;
+  }
+  button {
+    margin: 0 auto;
+  }
   .findAppointment-input {
     max-width: 1200px;
     margin: 0 auto;
@@ -24,7 +34,7 @@
         color: red;
         div {
           width: 400px;
-          &.MuiSelect-root-119 {
+          &.select {
             margin-top: 30px;
           }
         }

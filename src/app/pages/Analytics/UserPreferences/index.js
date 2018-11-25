@@ -1,18 +1,13 @@
+
 import React, {Component} from "react";
 
 import {
     Pie,
     PieChart,
     Tooltip,
-    BarChart,
-    Bar,
-    XAxis,
-    YAxis,
-    CartesianGrid,
-    Legend,
 } from 'recharts';
 
-class AnalyticsTwo extends Component {
+class UserPreferences extends Component {
 
     constructor(props) {
         super(props);
@@ -35,8 +30,8 @@ class AnalyticsTwo extends Component {
     render() {
         return (
             <div className="analytics-heading">
-                <h2>Najczesciej szukane uslugi</h2>
-                <p>Która z usług cieszyła się największą popularnością</p>
+                <h2>Preferencje uytkowników</h2>
+                <p>Preferencje uytkowników dotyczące wyników wyszukiwania</p>
                 <div className="charts-container">
                 {this.state.dataPlaces != null && console.log(this.state.dataPlaces)}
                     {console.log( this.state.dataPlaces ? this.state.dataPlaces : null)}
@@ -44,17 +39,9 @@ class AnalyticsTwo extends Component {
                         <Pie isAnimationActive={false} data={this.state.dataPlaces} cx={200} cy={200} outerRadius={80} fill="#8884d8" label/>
                         <Tooltip/>
                     </PieChart>
-                    <BarChart width={600} height={300} data={this.state.dataPlaces} margin={{top: 20, right: 30, left: 20, bottom: 5}}>
-                        <CartesianGrid strokeDasharray="3 3"/>
-                        <XAxis dataKey="name"/>
-                        <YAxis/>
-                        <Tooltip/>
-                        <Legend />
-                        <Bar dataKey="value" name="test" stackId="a" fill="#82ca9d" />
-                    </BarChart>
                 </div>
             </div>
         )
     }
 }
-export default AnalyticsTwo;
+export default UserPreferences;
