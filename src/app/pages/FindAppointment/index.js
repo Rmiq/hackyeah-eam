@@ -269,7 +269,7 @@ class FindAppointment extends Component {
                     <MenuItem value="distance">Odległość</MenuItem>
                     <MenuItem value="time">Czas oczekiwania</MenuItem>
                   </Select>
-                  {errors.province && touched.province && errors.province}
+                  {errors.preferences && touched.preferences && errors.preferences}
                 </div>
                 <Button
                   type="submit"
