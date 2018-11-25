@@ -16,7 +16,7 @@ const RadioButton = ({
   className,
   ...props
 }) => {
-  return (
+  return ( 
     <div>
       <input
         name={name}
@@ -96,13 +96,12 @@ class FindAppointment extends Component {
             }
             return errors;
           }}
-          onSubmit={(values, { setSubmitting }) => {
+          onSubmit={(values, { setSubmitting, resetForm }) => {
            
               this.setState({submitCount: submitCount + 1,
               isActive: false })
               // alert(JSON.stringify(values, null, 2));
-              let url =  `https://api.nfz.gov.pl/queues?page=1&limit=10&format=json&case=${values.case}&benefit=${values.benefit}${values.province !== "00" ? '&province=' + values.province : ''}`
-            
+              let url =  `https://api.nfz.gov.pl/queues?page=1&limit=10&format=json&case=${values.case}&benefit=${values.benefit}${values.province !== "00" ? '&province=' + values.province : ''}${values.locality !== "" ? '&locality=' + values.locality : ''}${values.street !== "" ? '&street=' + values.street : ''}${values.place !== "" ? '&place=' + values.place : ''}${values.provider !== "" ? '&provider=' + values.provider : ''}`
               fetch(
                 url
               )
@@ -118,7 +117,8 @@ class FindAppointment extends Component {
                 body: JSON.stringify(values)
               }).then((response)=> response.json()).then((res) => this.setState({
                 token:res.token
-              })) 
+              }))
+              resetForm(); 
               setSubmitting(false);
             
           }}
