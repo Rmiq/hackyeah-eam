@@ -76,18 +76,15 @@ class FindAppointment extends Component {
 
   sortData(){
     let data = this.state.dataPlaces;
-    if(this.state.preferences == "time"){
-      return data;
-    } else {
       console.log(data);
       data.data.forEach((el)=>{
         let dis = this.calculcateDist(el.attributes.latitude, el.attributes.longitude, this.state.userLat, this.state.userLng);
         el.distance = dis;
       });
-      data.data.sort(this.compareDist)
+      if(this.state.preferences == "distance"){
+        data.data.sort(this.compareDist)
+      }
       return data;
-    }
-   
   }
 
   compareDist(a,b){
