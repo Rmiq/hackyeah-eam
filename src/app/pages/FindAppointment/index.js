@@ -273,7 +273,7 @@ class FindAppointment extends Component {
                 </Button>
               </form>
             
-            </Card> : <Button onClick={this.handleClick}>Wyszukaj ponownie</Button>}
+            </Card> : <Button variant="contained" color="primary" onClick={this.handleClick}>Wyszukaj ponownie</Button>}
            </>
           )}
         </Formik>
