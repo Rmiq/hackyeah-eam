@@ -61,8 +61,15 @@ class FindAppointment extends Component {
     super(props);
     this.state = {
       dataPlaces: [],
-      submitCount: 0
+      submitCount: 0,
+      isActive: true
     }
+  }
+  handleClick = ()=>{
+    this.setState({
+      isActive: true,
+      dataPlaces:[]
+    })
   }
   render() {
     const { submitCount,dataPlaces } = this.state;
@@ -88,18 +95,21 @@ class FindAppointment extends Component {
             return errors;
           }}
           onSubmit={(values, { setSubmitting }) => {
-            setTimeout(() => {
-              this.setState({submitCount: submitCount + 1 })
+           
+              this.setState({submitCount: submitCount + 1,
+              isActive: false })
+              setTimeout(()=>{
               // alert(JSON.stringify(values, null, 2));
-              let url =  `https://api.nfz.gov.pl/queues?page=1&limit=10&format=json&case=${values.case}&benefit=${values.benefit}${values.province !== "00" ? '&province=' + values.province : null}`
-              console.log(url);
+              let url =  `https://api.nfz.gov.pl/queues?page=1&limit=10&format=json&case=${values.case}&benefit=${values.benefit}${values.province !== "00" ? '&province=' + values.province : ''}`
+            
               fetch(
                 url
               )
                 .then(response => response.json())
-                .then(data => this.setState({ dataPlaces: data }));
+                .then(data => {this.setState({ dataPlaces: data })
+                console.log(data)});
 
-
+              
               // fetch("https://0f9gctnbb6.execute-api.eu-central-1.amazonaws.com/hackyeah-eam/add-data",{
               //   method: 'POST',
               //   headers: {
@@ -107,8 +117,8 @@ class FindAppointment extends Component {
               //   },
               //   body: JSON.stringify(values)
               // }).then((response)=> response.json()).then((res) => console.log(res))
-              setSubmitting(false);
-            }, 400);
+              setSubmitting(false)},400);
+           
           }}
         >
           {({
@@ -118,10 +128,12 @@ class FindAppointment extends Component {
             handleChange,
             handleBlur,
             handleSubmit,
-            isSubmitting
+            isSubmitting,
+            dataPlaces
             /* and other goodies */
           }) => (
-            <Card className="findAppointment-input">
+            <>
+            {this.state.isActive ? <Card className="findAppointment-input">
               <h1>Zacznij od wyszukania terminu</h1>
 
               <form onSubmit={handleSubmit}>
@@ -258,12 +270,14 @@ class FindAppointment extends Component {
                   Wyszukaj termin
                 </Button>
               </form>
-            </Card>
+            
+            </Card> : <Button onClick={this.handleClick}>Wyszukaj ponownie</Button>}
+           </>
           )}
         </Formik>
         <div className="bottom-container">
-        {console.log(dataPlaces)}
-        {submitCount === 0 ? null : dataPlaces.length != 0 ? <div className="bottom-inner"><TableData dataPlaces={dataPlaces}/><PlacesMap lati={dataPlaces} long={dataPlaces} /></div> : <span>Wyszukaj ponownie</span> }
+       
+        {(this.state.isActive === false)&&dataPlaces.length>0 ? <div className="bottom-inner"><TableData dataPlaces={dataPlaces}/><PlacesMap dataPlaces={dataPlaces} /></div> : <span>Wyszukaj ponownie</span> }
         
        
         </div>

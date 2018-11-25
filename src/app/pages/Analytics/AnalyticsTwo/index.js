@@ -30,7 +30,7 @@ class AnalyticsTwo extends Component {
 
         return (
             <div className="analytics-heading">
-                <h4>Wykres liniowy</h4>
+                <h4>Najczesciej szukane uslugi</h4>
                 <div className="charts-container">
                 {this.state.dataPlaces != null && console.log(this.state.dataPlaces)}
                     {console.log( this.state.dataPlaces ? this.state.dataPlaces : null)}

@@ -8,46 +8,61 @@ import "./styles.scss";
 class PlacesMap extends Component {
 
     state = {
-        lat:50,
-        lng: 50,
-        zoom: 5
+        lat: [],
+        lng: [],
+        place:[],
+        locality:[],
+        date:[],
+        phone:[],
+        address:[],
+        zoom: 6
     }
     
-componentWillMount(){
-    this.props.lati&& this.props.lati.data.map(x=>
-            
-        this.setState({
-            lat:x.attributes.latitude
-        })
-    )
-    this.props.long&&this.props.long.data.map(y=>
-        this.setState({
-            lng:y.attributes.latitude
-        })
-    )
+componentDidMount(){
+    this.setState({ 
+        lat:this.props.dataPlaces.data.map(x=>x.attributes.latitude),
+        lng:this.props.dataPlaces.data.map(y=>y.attributes.longitude),
+        place:this.props.dataPlaces.data.map(el=>el.attributes.place),
+        locality:this.props.dataPlaces.data.map(el=>el.attributes.locality),
+        date:this.props.dataPlaces.data.map(el=>el.attributes.dates.date),
+        phone:this.props.dataPlaces.data.map(el=>el.attributes.phone),
+        address:this.props.dataPlaces.data.map(el=>el.attributes.address)
+    })
+    
+//    this.setState(prevState => ({
+//        position: {
+           
+//            lat: [...prevState.lat,this.props.lati.data]
+//        }
+//    }))
+// this.setState({position: [...this.state.position, this.props.lati.data]})
+
 }
     render() {
         
       
         
-        const position = [this.state.lat, this.state.lng]
-        console.log(this.state.lat)
+        // const position = [this.state.lat, this.state.lng]
+        
         return (
             <div className="map-container">
-            {console.log('position',position)}
-            <Map center={position} zoom={this.state.zoom}>
+      
+            { <Map center={[52.12461,19.300636]} zoom={this.state.zoom}>
                 <TileLayer
                     attribution='Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community'
                     url='https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}' />
-                <Marker position={position}>
+                
+               
+                {this.state.lat.map((el,i)=> <Marker key={i} position={[el,this.state.lng[i]]}>
                     <Popup>
-                        <h2>Provider Name</h2>
-                        <p>Locality, address</p>
+                        <h2>{this.state.place[i]}</h2>
+                        <p>{this.state.locality[i]}</p>
+                        <p>{this.state.address[i]}</p>
                         <div className="submit-container">
                             <div>
-                                <p>First visit:</p>
                                 <ul>
-                                    <li>2018-11-12</li>
+                                    <li>Pierwszy termin: {this.state.date[i]}</li>
+                                    <li>Telefon: {this.state.phone[i]}</li>
                                 </ul>
 
                             </div>
@@ -58,8 +73,8 @@ componentWillMount(){
                         
 
                     </Popup>
-                </Marker>
-            </Map>
+                </Marker>)}
+            </Map>}
             </div>
 
         );

@@ -37,10 +37,10 @@ class Analytics extends Component {
                         <Link to="AnalyticsTwo">Najczęściej szukane usługi</Link>
                         </MenuItem>
                         <MenuItem>
-                        <Link to="AnalyticsThree">Publiczne vs. prywatne</Link>
+                        <Link to="AnalyticsThree">Porzucone rezerwacje</Link>
                         </MenuItem>
                         <MenuItem>
-                        <Link to="AnalyticsFour">Najpopularniejsze kliniki</Link>
+                        <Link to="AnalyticsFour">Aktywność wojewodztw</Link>
                         </MenuItem>
                     </MenuList>
                 </div>

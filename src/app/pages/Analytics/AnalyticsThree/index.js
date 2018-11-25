@@ -44,7 +44,7 @@ class AnalyticsThree extends Component {
         ];
         return (
             <div className="analytics-heading">
-                <h4>Wykres kołowy</h4>
+                <h4>Porzucone rezerwacje</h4>
                 <div className="charts-container">
                     <PieChart width={800} height={400}>
                         <Pie

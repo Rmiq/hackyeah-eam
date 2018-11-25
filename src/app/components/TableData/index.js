@@ -51,12 +51,12 @@ function PlacesTable(props) {
                 <TableBody>
                     {places && places.map(x => {
                         return (
-                            <TableRow className={classes.row} key={x.attributes.place}>
-                                <CustomTableCell component="th" scope="row">
+                            <TableRow className={classes.row} key={x.attributes.id}>
+                                <CustomTableCell key={x.attributes.id} component="th" scope="row">
                                     {x.attributes.place}
                                 </CustomTableCell>
-                                <CustomTableCell numeric>{x.attributes.locality}</CustomTableCell>
-                                <CustomTableCell numeric>{x.attributes.dates.date}</CustomTableCell>
+                                <CustomTableCell key={x.attributes.id} numeric>{x.attributes.locality}</CustomTableCell>
+                                <CustomTableCell key={x.attributes.id} numeric>{x.attributes.dates.date}</CustomTableCell>
 
                             </TableRow>
                         );
