@@ -34,17 +34,15 @@ class AnalyticsTwo extends Component {
     }
 
     render() {
-        const COLORS = ['#d50000', '#039be5','#00c853','#ff7043','#fff176'];
+        const COLORS = ['#d50000', '#039be5','#00c853','#ff7043','#fff176','#18ffff','#00e676','#ff9100','#7b1fa2','#7cb342'];
         return (
             <div className="analytics-heading">
                 <h2>Najczęściej szukane usługi</h2>
                 <p>Która z usług cieszyła się największą popularnością</p>
                 <div className="charts-container">
-{/*                 {this.state.dataPlaces != null && console.log(this.state.dataPlaces)} */}
-                   
                     <PieChart width={800} height={400}>
                         <Pie isAnimationActive={false} data={this.state.dataPlaces} cx={200} cy={200} outerRadius={80} fill="#8884d8" label>
-                            {console.log(this.state.dataPlaces)}
+                        {Object.keys(this.state.dataPlaces).map((entry,index)=><Cell fill={COLORS[index % COLORS.length]}/>)}
                         </Pie>
                         <Tooltip/>
                     </PieChart>
