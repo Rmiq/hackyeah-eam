@@ -26,7 +26,9 @@ handleClick(e, lat,provider, lng){
         provider:provider,
         token:this.props.token,
         latitude:lat,
-        longitude:lng
+        longitude:lng,
+        userLat: this.props.userLat,
+        userLng: this.props.userLng
     }
     
     fetch("https://0f9gctnbb6.execute-api.eu-central-1.amazonaws.com/hackyeah-eam/update-data",{
@@ -55,7 +57,7 @@ componentDidMount(){
 
         return (
             <div className="map-container">
-      
+            {console.log(this.props.userLat, this.props.userLng)}
             { <Map center={[52.12461,19.300636]} zoom={this.state.zoom}>
                 <TileLayer
                     attribution='Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community'
@@ -81,6 +83,7 @@ componentDidMount(){
                             </div>
                         </div>
                         <a target="_blank" href={`https://www.google.com/search?q=${this.state.provider[i]}`}>Dowiedz się więcej</a>
+                        <p> Distance: `${}`</p>
                         
 
                     </Popup>
