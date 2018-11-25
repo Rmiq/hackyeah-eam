@@ -98,7 +98,6 @@ class FindAppointment extends Component {
            
               this.setState({submitCount: submitCount + 1,
               isActive: false })
-              setTimeout(()=>{
               // alert(JSON.stringify(values, null, 2));
               let url =  `https://api.nfz.gov.pl/queues?page=1&limit=10&format=json&case=${values.case}&benefit=${values.benefit}${values.province !== "00" ? '&province=' + values.province : ''}`
             
@@ -106,19 +105,18 @@ class FindAppointment extends Component {
                 url
               )
                 .then(response => response.json())
-                .then(data => {this.setState({ dataPlaces: data })
-                console.log(data)});
+                .then(data => this.setState({ dataPlaces: data }));
 
-              
-              // fetch("https://0f9gctnbb6.execute-api.eu-central-1.amazonaws.com/hackyeah-eam/add-data",{
-              //   method: 'POST',
-              //   headers: {
-              //     "Content-Type": "application/json; charset=utf-8",
-              //   },
-              //   body: JSON.stringify(values)
-              // }).then((response)=> response.json()).then((res) => console.log(res))
-              setSubmitting(false)},400);
-           
+
+              fetch("https://0f9gctnbb6.execute-api.eu-central-1.amazonaws.com/hackyeah-eam/add-data",{
+                method: 'POST',
+                headers: {
+                  "Content-Type": "application/json; charset=utf-8",
+                },
+                body: JSON.stringify(values)
+              }).then((response)=> response.json()).then((res) => console.log(res)) 
+              setSubmitting(false);
+            
           }}
         >
           {({
@@ -277,7 +275,7 @@ class FindAppointment extends Component {
         </Formik>
         <div className="bottom-container">
        
-        {(this.state.isActive === false)&&dataPlaces.length>0 ? <div className="bottom-inner"><TableData dataPlaces={dataPlaces}/><PlacesMap dataPlaces={dataPlaces} /></div> : <span>Wyszukaj ponownie</span> }
+        {submitCount === 0 ? null : dataPlaces.length != 0 ? <div className="bottom-inner"><TableData dataPlaces={dataPlaces}/><PlacesMap dataPlaces={dataPlaces} /></div> : <span>Wyszukaj ponownie</span> }
         
        
         </div>
