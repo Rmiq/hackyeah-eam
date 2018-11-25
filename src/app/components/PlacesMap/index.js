@@ -65,6 +65,7 @@ calculcateDist(a,b,c,d){
 
         return (
             <div className="map-container">
+           
             {console.log(this.props.userLat, this.props.userLng)}
             { <Map center={[52.12461,19.300636]} zoom={this.state.zoom}>
                 <TileLayer
@@ -87,7 +88,7 @@ calculcateDist(a,b,c,d){
 
                             </div>
                             <div>
-                               <Button variant="contained" color="primary" onClick={(e) => {this.handleClick(e, el, this.state.provider[i],this.state.lng[i])}}> Umów wizytę </Button>
+                               <Link to="dziekujemy"><Button variant="contained" color="primary" onClick={(e) => {this.handleClick(e, el, this.state.provider[i],this.state.lng[i])}}> Umów wizytę </Button></Link>
                             </div>
                         </div>
                         <a target="_blank" href={`https://www.google.com/search?q=${this.state.provider[i]}`}>Dowiedz się więcej</a>
@@ -97,7 +98,7 @@ calculcateDist(a,b,c,d){
                     </Popup>
                 </Marker>)}
             </Map>}
-     
+          
             </div>
 
         );

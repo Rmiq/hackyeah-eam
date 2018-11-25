@@ -1,0 +1,14 @@
+.thankyou{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 90vh;
+
+    &-header{
+        color: #3700B3;
+    }
+    &-paragraph{
+        color:#3700B3;
+    }
+}
