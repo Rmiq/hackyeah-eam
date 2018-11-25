@@ -10,6 +10,7 @@ import {
     YAxis,
     CartesianGrid,
     Legend,
+    Cell
 } from 'recharts';
 
 class AnalyticsTwo extends Component {
@@ -33,13 +34,16 @@ class AnalyticsTwo extends Component {
     }
 
     render() {
+        const COLORS = ['#d50000', '#039be5','#00c853','#ff7043','#fff176'];
         return (
             <div className="analytics-heading">
                 <h2>Najczęściej szukane usługi</h2>
                 <p>Która z usług cieszyła się największą popularnością</p>
                 <div className="charts-container">
                     <PieChart width={800} height={400}>
-                        <Pie isAnimationActive={false} data={this.state.dataPlaces} cx={200} cy={200} outerRadius={80} fill="#8884d8" label/>
+                        <Pie isAnimationActive={false} data={this.state.dataPlaces} cx={200} cy={200} outerRadius={80} fill="#8884d8" label>
+                            {console.log(this.state.dataPlaces)}
+                        </Pie>
                         <Tooltip/>
                     </PieChart>
                     <BarChart width={600} height={300} data={this.state.dataPlaces} margin={{top: 20, right: 30, left: 20, bottom: 5}}>
