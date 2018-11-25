@@ -38,6 +38,9 @@ const styles = theme => ({
 function PlacesTable(props) {
     const {classes, places} = props;
 
+   /*  handleRowPlacesTableClick = () => {
+
+    } */
     return (
         <Paper className={classes.root}>
             <Table className={classes.table}>
@@ -73,7 +76,9 @@ class TableData extends Component {
             data: []
         }
     }
-
+    // handleRowTableClick = () => {
+    //     this.props.onSelectRow('sss')
+    // }
     // componentDidMount() {
 
     //     fetch('https://api.nfz.gov.pl/queues?page=1&limit=10&format=json&case=1&province=07&loc' +

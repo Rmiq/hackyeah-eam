@@ -1,9 +1,13 @@
 import React, { Component } from "react";
-
+import {Router, Link} from '@reach/router';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 import Button from '@material-ui/core/Button';
+
+
 import "../../../../node_modules/leaflet/dist/leaflet.css"
 import "./styles.scss";
+
+
 
 class PlacesMap extends Component {
 
@@ -86,7 +90,7 @@ componentDidMount(){
 
                             </div>
                             <div>
-                                <Button variant="contained" color="primary" onClick={(e) => {this.handleClick(e, el, this.state.provider[i],this.state.lng[i])}}> Umów wizytę </Button>
+                               <Button variant="contained" color="primary" onClick={(e) => {this.handleClick(e, el, this.state.provider[i],this.state.lng[i])}}> Umów wizytę </Button>
                             </div>
                         </div>
                         <a target="_blank" href={`https://www.google.com/search?q=${this.state.provider[i]}`}>Dowiedz się więcej</a>
@@ -95,6 +99,7 @@ componentDidMount(){
                     </Popup>
                 </Marker>)}
             </Map>}
+     
             </div>
 
         );
