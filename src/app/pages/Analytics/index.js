@@ -27,13 +27,13 @@ class Analytics extends Component {
                         <Link to="AnalyticsThree">Porzucone rezerwacje</Link>
                         </MenuItem>
                         <MenuItem>
-                        <Link to="AnalyticsFour">Aktywność wojewodztw</Link>
+                        <Link to="AnalyticsFour">Aktywność wojewódźtw</Link>
                         </MenuItem>
                         <MenuItem>
-                        <Link to="DistanceMap">Aktywność uztkowników</Link>
+                        <Link to="DistanceMap">Aktywność użytkowników</Link>
                         </MenuItem>
                         <MenuItem>
-                        <Link to="UserPreferences">Preferencje uytkowników</Link>
+                        <Link to="UserPreferences">Preferencje użytkowników</Link>
                         </MenuItem>
                     </MenuList>
                 </div>
