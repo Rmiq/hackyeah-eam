@@ -271,7 +271,7 @@ class FindAppointment extends Component {
         </Formik>
         <div className="bottom-container">
 
-          {submitCount === 0 ? null : dataPlaces.length != 0 ? <div className="bottom-inner"><TableData onSelectRow={this.handleSelectRow} dataPlaces={dataPlaces}/><PlacesMap dataPlaces={dataPlaces} token={this.state.token}/></div> : <span>Wyszukaj ponownie</span>}
+          {submitCount === 0 ? null : dataPlaces.length != 0 ? <div className="bottom-inner"><TableData onSelectRow={this.handleSelectRow} dataPlaces={dataPlaces}/><PlacesMap dataPlaces={dataPlaces} token={this.state.token} userLng={this.state.userLng} userLat={this.state.userLat}/></div> : <span>Wyszukaj ponownie</span>}
         </div>
       </div>
     );
