@@ -25,8 +25,7 @@ class AnalyticsOne extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          dataPlaces: [],
-          submitCount: 0
+          dataPlaces: []
         }
     }
 
