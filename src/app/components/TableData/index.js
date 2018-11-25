@@ -49,6 +49,7 @@ function PlacesTable(props) {
                         <CustomTableCell>Nazwa</CustomTableCell>
                         <CustomTableCell>Lokalizacja</CustomTableCell>
                         <CustomTableCell>Dostępność</CustomTableCell>
+                        <CustomTableCell>Dystans</CustomTableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -60,6 +61,7 @@ function PlacesTable(props) {
                                 </CustomTableCell>
                                 <CustomTableCell key={x.attributes.id} numeric>{`${x.attributes.locality}, ${x.attributes.address}`}</CustomTableCell>
                                 <CustomTableCell key={x.attributes.id} numeric>{x.attributes.dates.date}</CustomTableCell>
+                                <CustomTableCell key={x.distance} numeric>{Math.round(x.distance * 111.1) + "km"}</CustomTableCell>
 
                             </TableRow>
                         );
@@ -93,8 +95,8 @@ class TableData extends Component {
         return (
 
             <div className="table-container">
-
-                <PlacesTable places={this.props.dataPlaces.data} classes={this.props.classes}/></div>
+            {console.log(this.props.dataPlaces)}
+                <PlacesTable places={this.props.dataPlaces.data ? this.props.dataPlaces.data : null} classes={this.props.classes}/></div>
         )
     }
 }

@@ -76,8 +76,26 @@ class FindAppointment extends Component {
 
   sortData(){
     let data = this.state.dataPlaces;
-    console.log(data);
-    return data;
+    if(this.state.preferences == "time"){
+      return data;
+    } else {
+      console.log(data);
+      data.data.forEach((el)=>{
+        let dis = this.calculcateDist(el.attributes.latitude, el.attributes.longitude, this.state.userLat, this.state.userLng);
+        el.distance = dis;
+      });
+      data.data.sort(this.compareDist)
+      return data;
+    }
+   
+  }
+
+  compareDist(a,b){
+    if (a.distance < b.distance)
+      return -1;
+    if (a.distance > b.distance)
+      return 1;
+    return 0;
   }
 
   calculcateDist(a,b,c,d){
@@ -120,7 +138,8 @@ class FindAppointment extends Component {
           onSubmit={(values, {setSubmitting, resetForm}) => {
           this.setState({
             submitCount: submitCount + 1,
-            isActive: false
+            isActive: false,
+            preferences: values.preferences
           })
           let tempValues = {
             ...values,
@@ -138,7 +157,7 @@ class FindAppointment extends Component {
             this.setState({userLat: lat, userLng: long});
           });
 
-          fetch(`https://api.nfz.gov.pl/queues?page=1&limit=20&format=json&case=${values.case}&benefit=${values.benefit}${values.province !== "00" ? '&province=' + values.province : ''}`)
+          fetch(`https://api.nfz.gov.pl/queues?page=1&limit=25&format=json&case=${values.case}&benefit=${values.benefit}${values.province !== "00" ? '&province=' + values.province : ''}`)
           .then((values) => {
             return values.json();           
           }).then((val) => {
