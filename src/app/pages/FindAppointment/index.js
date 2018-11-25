@@ -131,7 +131,7 @@ class FindAppointment extends Component {
             this.setState({dataPlaces: val});
           });
 
-          setTimeout(function(){ 
+          setTimeout(()=>{ 
               fetch("https://0f9gctnbb6.execute-api.eu-central-1.amazonaws.com/hackyeah-eam/add-data", {
                     method: 'POST',
                     headers: {
@@ -141,7 +141,7 @@ class FindAppointment extends Component {
             }).then((res) => res.json())
               .then((response) => {
                 console.log(response);
-                // this.setState({token: response.token});
+                this.setState({token: response.token});
                 resetForm();
             });
            }, 500);
