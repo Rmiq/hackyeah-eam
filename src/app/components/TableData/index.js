@@ -53,7 +53,7 @@ function PlacesTable(props) {
                         return (
                             <TableRow className={classes.row} key={x.attributes.id}>
                                 <CustomTableCell key={x.attributes.id} component="th" scope="row">
-                                    {x.attributes.place}
+                                    {x.attributes.provider}
                                 </CustomTableCell>
                                 <CustomTableCell key={x.attributes.id} numeric>{x.attributes.locality}</CustomTableCell>
                                 <CustomTableCell key={x.attributes.id} numeric>{x.attributes.dates.date}</CustomTableCell>
