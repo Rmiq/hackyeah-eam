@@ -3,9 +3,6 @@ import './styles.scss';
 import {Router, Link} from "@reach/router";
 import MenuList from '@material-ui/core/MenuList';
 import MenuItem from '@material-ui/core/MenuItem';
-import { withStyles } from '@material-ui/core/styles';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
 
 import AnalyticsOne from "./AnalyticsOne";
 import AnalyticsTwo from "./AnalyticsTwo";
