@@ -9,7 +9,7 @@ class AnalyticsFour extends Component {
 
     componentDidMount() {
 
-        const url = "https://0f9gctnbb6.execute-api.eu-central-1.amazonaws.com/hackyeah-eam/get-data/region-activities";
+        const url = "https://0f9gctnbb6.execute-api.eu-central-1.amazonaws.com/hackyeah-eam/get-data/get-users";
         fetch(url)
             .then(response => response.json())
             .then(data => this.setState({ dataPlaces: data.body }));
