@@ -27,7 +27,7 @@ class Analytics extends Component {
                         <Link to="AnalyticsThree">Porzucone rezerwacje</Link>
                         </MenuItem>
                         <MenuItem>
-                        <Link to="AnalyticsFour">Aktywność wojewódźtw</Link>
+                        <Link to="AnalyticsFour">Aktywność województw</Link>
                         </MenuItem>
                         <MenuItem>
                         <Link to="DistanceMap">Aktywność użytkowników</Link>
