@@ -190,7 +190,7 @@ class FindAppointment extends Component {
             handleBlur,
             handleSubmit,
             isSubmitting,
-            dataPlaces}) => ( <div> { this.state.isActive ? 
+            dataPlaces}) => ( <> { this.state.isActive ? 
                <Card className="findAppointment-input">
                   <h1>Zacznij od wyszukania terminu</h1>
 
@@ -300,7 +300,7 @@ class FindAppointment extends Component {
                       Wyszukaj termin
                     </Button>
                   </form>
-                </Card> : <Button variant="contained" color="primary" onClick={this.handleClick}>Wyszukaj ponownie</Button>} </div> )}
+                </Card> : <Button variant="contained" color="primary" onClick={this.handleClick}>Wyszukaj ponownie</Button>} </> )}
         </Formik>
         <div className="bottom-container">
 
