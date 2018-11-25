@@ -15,7 +15,6 @@ class PlacesMap extends Component {
         date:[],
         phone:[],
         address:[],
-        testPos: 40,
         zoom: 6
     }
     
@@ -38,7 +37,6 @@ componentDidMount(){
 //    }))
 // this.setState({position: [...this.state.position, this.props.lati.data]})
 
-console.log(this.state.testPos)
 }
     render() {
         
@@ -54,8 +52,8 @@ console.log(this.state.testPos)
                     attribution='Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community'
                     url='https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}' />
                 
-                {this.state.lat.map((el, i)=> console.log(el,this.state.lng[i]))}
-                {this.state.lat.map((el,i)=> <Marker position={[el,this.state.lng[i]]}>
+               
+                {this.state.lat.map((el,i)=> <Marker key={i} position={[el,this.state.lng[i]]}>
                     <Popup>
                         <h2>{this.state.place[i]}</h2>
                         <p>{this.state.locality[i]}</p>
