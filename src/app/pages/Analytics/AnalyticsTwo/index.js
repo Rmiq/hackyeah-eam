@@ -46,7 +46,8 @@ class AnalyticsTwo extends Component {
       ];
         return (
             <div className="analytics-heading">
-                <h4>Najczesciej szukane uslugi</h4>
+                <h2>Najczesciej szukane uslugi</h2>
+                <p>Która z usług cieszyła się największą popularnością</p>
                 <div className="charts-container">
                 {this.state.dataPlaces != null && console.log(this.state.dataPlaces)}
                     {console.log( this.state.dataPlaces ? this.state.dataPlaces : null)}
