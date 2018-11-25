@@ -50,7 +50,7 @@ class AnalyticsTwo extends Component {
                         <YAxis/>
                         <Tooltip/>
                         <Legend />
-                        <Bar dataKey="value" name="test" stackId="a" fill="#82ca9d" />
+                        <Bar dataKey="value" name="singleBar" stackId="a" fill="#82ca9d" />
                     </BarChart>
                 </div>
             </div>
