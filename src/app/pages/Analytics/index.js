@@ -3,9 +3,6 @@ import './styles.scss';
 import {Router, Link} from "@reach/router";
 import MenuList from '@material-ui/core/MenuList';
 import MenuItem from '@material-ui/core/MenuItem';
-import { withStyles } from '@material-ui/core/styles';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
 
 import AnalyticsOne from "./AnalyticsOne";
 import AnalyticsTwo from "./AnalyticsTwo";
@@ -13,19 +10,7 @@ import AnalyticsThree from "./AnalyticsThree";
 import AnalyticsFour from "./AnalyticsFour";
 class Analytics extends Component {
 
-    componentDidMount() {
-
-        fetch('https://0f9gctnbb6.execute-api.eu-central-1.amazonaws.com/hackyeah-eam/get-data')
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (myJson) {
-                // console.log(JSON.stringify(myJson))
-            });
-
-    }
     render() {
-
         return (
             <div className="analytics">
                 <div className="sideNav">

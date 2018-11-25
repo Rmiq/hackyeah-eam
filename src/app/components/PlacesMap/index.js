@@ -89,6 +89,7 @@ componentDidMount(){
                                 <Button variant="contained" color="primary" onClick={(e) => {this.handleClick(e, el, this.state.provider[i],this.state.lng[i])}}> Umów wizytę </Button>
                             </div>
                         </div>
+                        <a target="_blank" href={`https://www.google.com/search?q=${this.state.provider[i]}`}>Dowiedz się więcej</a>
                         
 
                     </Popup>
