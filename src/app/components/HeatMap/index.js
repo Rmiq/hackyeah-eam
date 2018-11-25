@@ -9,7 +9,7 @@ import "./styles.scss";
 class HeatMap extends Component {
 
     state = {
-        zoom: 14,
+        zoom: 6,
         points: []
     }
 
