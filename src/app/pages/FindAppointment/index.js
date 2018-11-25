@@ -9,6 +9,11 @@ import TableData from "../../components/TableData";
 import PlacesMap from "../../components/PlacesMap";
 import "./styles.scss";
 
+
+
+
+
+
 const RadioButton = ({
   field: { name, value, onChange, onBlur },
   id,
@@ -63,15 +68,51 @@ class FindAppointment extends Component {
       dataPlaces: [],
       submitCount: 0,
       token:"",
+      userLat:'',
+      userLng:'',
       isActive: true
 
     }
   }
+
+  handleAddress(locality,street,place){
+    fetch('https://maps.googleapis.com/maps/api/geocode/json?' +
+    'address=' + locality + street + place + '&key=' +
+    'AIzaSyCkzWzc1L1vUApjc-u5AsRaLuKz-HT-yNc') 
+    .then(response => response.json())
+    .then(
+        (data)=> {
+       
+            if (data.results.length > 0) {
+              console.log(data);
+                let lat = data.results[0].geometry.location.lat;
+                let long = data.results[0].geometry.location.lng;
+                console.log(lat);
+                console.log(long);
+                this.setState({
+                    userLat:lat,
+                    userLng:long
+                })
+            } else {
+                alert("Wrong address");
+            }
+  
+        }
+
+        )
+    
+  
+  }
+  
+
   handleClick = ()=>{
     this.setState({
       isActive: true,
       dataPlaces:[]
     })
+  }
+  handleSelectRow = () => {
+    console.log('parent')
   }
   render() {
     const { submitCount,dataPlaces } = this.state;
@@ -97,7 +138,7 @@ class FindAppointment extends Component {
             return errors;
           }}
           onSubmit={(values, { setSubmitting, resetForm }) => {
-           
+             
               this.setState({submitCount: submitCount + 1,
               isActive: false })
               // alert(JSON.stringify(values, null, 2));
@@ -107,14 +148,18 @@ class FindAppointment extends Component {
               )
                 .then(response => response.json())
                 .then(data => this.setState({ dataPlaces: data }));
-
+              const tempValues={
+                ...values,
+                userLat:this.state.userLat,
+                userLng:this.state.userLng
+              }
 
               fetch("https://0f9gctnbb6.execute-api.eu-central-1.amazonaws.com/hackyeah-eam/add-data",{
                 method: 'POST',
                 headers: {
                   "Content-Type": "application/json; charset=utf-8",
                 },
-                body: JSON.stringify(values)
+                body: JSON.stringify(tempValues)
               }).then((response)=> response.json()).then((res) => this.setState({
                 token:res.token
               }))
@@ -268,6 +313,7 @@ class FindAppointment extends Component {
                   variant="contained"
                   color="primary"
                   className="submit-button"
+                  onClick={(e)=>this.handleAddress(values.locality,values.street,values.place)}
                 >
                   Wyszukaj termin
                 </Button>
@@ -279,7 +325,7 @@ class FindAppointment extends Component {
         </Formik>
         <div className="bottom-container">
        
-        {submitCount === 0 ? null : dataPlaces.length != 0 ? <div className="bottom-inner"><TableData dataPlaces={dataPlaces}/><PlacesMap dataPlaces={dataPlaces} token={this.state.token} /></div> : <span>Wyszukaj ponownie</span> }
+        {submitCount === 0 ? null : dataPlaces.length != 0 ? <div className="bottom-inner"><TableData onSelectRow={this.handleSelectRow} dataPlaces={dataPlaces}/><PlacesMap dataPlaces={dataPlaces} token={this.state.token} /></div> : <span>Wyszukaj ponownie</span> }
         
        
         </div>
