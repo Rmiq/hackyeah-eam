@@ -9,6 +9,7 @@ import AnalyticsTwo from "./AnalyticsTwo";
 import AnalyticsThree from "./AnalyticsThree";
 import AnalyticsFour from "./AnalyticsFour";
 import DistanceMap from "./DistanceMap";
+import UserPreferences from "./UserPreferences";
 class Analytics extends Component {
 
     render() {
@@ -29,7 +30,10 @@ class Analytics extends Component {
                         <Link to="AnalyticsFour">Aktywność wojewodztw</Link>
                         </MenuItem>
                         <MenuItem>
-                        <Link to="DistanceMap">Odległość od placówki</Link>
+                        <Link to="DistanceMap">Aktywność uztkowników</Link>
+                        </MenuItem>
+                        <MenuItem>
+                        <Link to="UserPreferences">Preferencje uytkowników</Link>
                         </MenuItem>
                     </MenuList>
                 </div>
@@ -40,6 +44,7 @@ class Analytics extends Component {
                     <AnalyticsThree path="AnalyticsThree"></AnalyticsThree>
                     <AnalyticsFour path="AnalyticsFour"></AnalyticsFour>
                     <DistanceMap path="DistanceMap"></DistanceMap>
+                    <UserPreferences path="UserPreferences"></UserPreferences>
                 </Router>
             </div>
         )

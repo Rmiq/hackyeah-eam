@@ -191,6 +191,7 @@ class FindAppointment extends Component {
                     value={values.province}
                     onChange={handleChange}
                     onBlur={handleBlur}
+                    className="select"
                     // inputProps={{
                     //   name: 'age',
                     //   id: 'age-simple',
@@ -265,6 +266,7 @@ class FindAppointment extends Component {
                     value={values.preferences}
                     onChange={handleChange}
                     onBlur={handleBlur}
+                    className="select"
                   >
                     <MenuItem value="distance">Odległość</MenuItem>
                     <MenuItem value="time">Czas oczekiwania</MenuItem>

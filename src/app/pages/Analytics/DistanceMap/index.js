@@ -24,8 +24,8 @@ class DistanceMap extends Component {
 
        return (
            <div className="analytics-heading">
-               <h2>Odległość od poszczególnej placówki</h2>
-               <p>Mapa pokazująca odległość między uzytkownikiem a wyszukiwaną placówką</p>
+               <h2>Mapa aktywności uzytkownikow</h2>
+               <p>Mapa pokazująca najaktywniejsze miejsca wsrod uzytkownikow</p>
                {this.state.dataPlaces && this.state.dataPlaces.length > 0 ? <HeatMap dataPlaces={this.state.dataPlaces} /> : null}
            </div>
        )
