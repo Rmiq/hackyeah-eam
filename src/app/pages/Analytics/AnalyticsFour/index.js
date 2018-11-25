@@ -1,4 +1,6 @@
 import React, {Component} from "react";
+import './styles.scss';
+
 import {
     BarChart, Bar, XAxis, YAxis, Tooltip, Legend, AreaChart, Area, CartesianGrid,
 } from 'recharts';
@@ -6,79 +8,57 @@ import {
 class AnalyticsFour extends Component {
 
     componentDidMount() {
-        const url = "https://0f9gctnbb6.execute-api.eu-central-1.amazonaws.com/hackyeah-eam/get-data/most-common?criteria=benefit";
-       fetch(url)
-           .then(function (response) {
-               return response.json();
-           })
-           .then(function (myJson) {
-               console.log(JSON.stringify(myJson));
-           });
+
+        const url = "https://0f9gctnbb6.execute-api.eu-central-1.amazonaws.com/hackyeah-eam/get-data/region-activities";
+        fetch(url)
+            .then(response => response.json())
+            .then(data => this.setState({ dataPlaces: data.body }));
+
     }
+
+    constructor(props) {
+        super(props);
+        this.state = {
+          dataPlaces: []
+        }
+    }
+
     render() {
-        const data = [
-            {
-                name: 'Page A',
-                uv: 4000,
-                pv: 2400,
-                amt: 2400
-            }, {
-                name: 'Page B',
-                uv: 3000,
-                pv: 1398,
-                amt: 2210
-            }, {
-                name: 'Page C',
-                uv: 2000,
-                pv: 9800,
-                amt: 2290
-            }, {
-                name: 'Page D',
-                uv: 2780,
-                pv: 3908,
-                amt: 2000
-            }, {
-                name: 'Page E',
-                uv: 1890,
-                pv: 4800,
-                amt: 2181
-            }, {
-                name: 'Page F',
-                uv: 2390,
-                pv: 3800,
-                amt: 2500
-            }, {
-                name: 'Page G',
-                uv: 3490,
-                pv: 4300,
-                amt: 2100
-            }
-        ];
 
         return (
             <div className="analytics-heading">
-                <h4>Aktywnosc wojewodztw</h4>
+                <h2>Aktywność województw</h2>
+                <p>Statystyka pokazująca aktywnosc danych województw oraz liczbe wizyt porzuconych</p>
                 <div className="charts-container">
-                <BarChart width={600} height={300} data={data}
-            margin={{top: 5, right: 30, left: 20, bottom: 5}}>
+                <BarChart width={800} height={300} data={this.state.dataPlaces} margin={{top: 20, right: 30, left: 20, bottom: 5}}>
                     <CartesianGrid strokeDasharray="3 3"/>
-                    <XAxis dataKey="name"/>
+                    <XAxis dataKey="wojewodztwo"/>
                     <YAxis/>
                     <Tooltip/>
                     <Legend />
-                    <Bar dataKey="pv" fill="#8884d8" />
-                    <Bar dataKey="uv" fill="#82ca9d" />
+                    <Bar dataKey="zapytania" name="Porzucone" stackId="a" fill="#82ca9d" />
+                    <Bar dataKey="sfinalizowane" name="Umówione" stackId="a" fill="#8884d8" />
                 </BarChart>
-                <AreaChart width={600} height={400} data={data}
-            margin={{top: 10, right: 30, left: 0, bottom: 0}}>
-                    <CartesianGrid strokeDasharray="3 3"/>
-                    <XAxis dataKey="name"/>
-                    <YAxis/>
-                    <Tooltip/>
-                    <Area type='monotone' dataKey='uv' stackId="1" stroke='#8884d8' fill='#8884d8' />
-                    <Area type='monotone' dataKey='pv' stackId="1" stroke='#82ca9d' fill='#82ca9d' />
-                    <Area type='monotone' dataKey='amt' stackId="1" stroke='#ffc658' fill='#ffc658' />
-                </AreaChart>
+                <div className="chart-legend"> 
+                    <h4> Legenda: </h4>
+                    <p> 00 - Cała Polska</p>
+                    <p> 01 - Dolnośląskie</p>
+                    <p> 02 - Kujawsko-pomorskie</p>
+                    <p> 03 - Lubelskie</p>
+                    <p> 04 - Lubuskie</p>
+                    <p> 05 - Łódzkie</p>
+                    <p> 06 - Małopolskie</p>
+                    <p> 07 - Mazowieckie</p>
+                    <p> 08 - Opolskie</p>
+                    <p> 09 - Podkarpackie</p>
+                    <p> 10 - Podlaskie</p>
+                    <p> 11 - Pomorskie</p>
+                    <p> 12 - Śląskie</p>
+                    <p> 13 - Świętokrzyskie</p>
+                    <p> 14 - Warmińsko-mazurskie</p>
+                    <p> 15 - Wielkopolskie</p>
+                    <p> 16 - Zachodnio-pomorskie</p>       
+                </div>
                 </div>
             </div>
         )
