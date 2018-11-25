@@ -11,7 +11,7 @@ import Paper from '@material-ui/core/Paper';
 import {
     PieChart,
     Pie,
-    Tooltip,
+    Tooltip,Cell
 } from 'recharts';
 
 const CustomTableCell = withStyles(theme => ({
@@ -42,14 +42,16 @@ class AnalyticsThree extends Component {
     }
 
     render() {
-
+        const COLORS = ['#d50000', '#039be5'];
         return (
             <div className="analytics-heading">
                 <h2>Porzucone rezerwacje</h2>
                 <p>Ile osób szukało placówki ale nie zdecydowało się na umówienie wizyty.</p>
                 <div className="charts-container">
                 <PieChart width={800} height={400}>
-                    <Pie isAnimationActive={false} data={this.state.dataPlaces} cx={200} cy={200} outerRadius={80} fill="#8884d8" label/>
+                    <Pie isAnimationActive={false} data={this.state.dataPlaces} cx={200} cy={200} outerRadius={80} fill="#8884d8" label>
+                        {this.state.dataPlaces.map((entry,index)=><Cell fill={COLORS[index % COLORS.length]}/>)}
+                    </Pie>
                     <Tooltip/>
                 </PieChart>
                 <Paper>
@@ -64,7 +66,7 @@ class AnalyticsThree extends Component {
                             {this.state.dataPlaces && this.state.dataPlaces.map(x => {
                                 return (
                                     <TableRow key={x.name}>
-                                        {console.log(x)}
+                                        
                                         <CustomTableCell key={x.name} component="th" scope="row">
                                             {x.name == 'false' ? "Nie" : "Tak"}
                                         </CustomTableCell>
